@@ -1,8 +1,10 @@
 # Hello Hardware
 
+A full-stack application built with NestJS backend and Angular frontend for hardware management systems.
+
 ## Description
 
-Hello Hardware is a full-stack application built with NestJS backend and Angular frontend. The project provides a robust and scalable architecture for hardware management systems.
+Hello Hardware is a comprehensive platform for hardware management with a customer-facing interface and back-office administration. The project provides a robust and scalable architecture using modern web technologies.
 
 ### Backend (NestJS)
 
@@ -56,14 +58,14 @@ wsl --install
 
 #### Install Docker
 
-Follow the official Docker installation guide: https://docs.docker.com/desktop/install/windows-install/
+Follow the official Docker installation guide: [Docker Installation](https://docs.docker.com/desktop/install/windows-install/)
 
 ### 2. Project Setup
 
 #### Clone Repository
 
 ```bash
-git clone git@github.com:yourusername/hello-hardware.git
+git clone git@github.com:JospenWolongwo/hello-hardware.git
 cd hello-hardware
 ```
 
@@ -112,8 +114,8 @@ npm run seed:run
 npm run start:dev
 ```
 
-- Backend will be available at: http://localhost:3000
-- Frontend will be available at: http://localhost:4200
+- Backend will be available at: [http://localhost:3000](http://localhost:3000)
+- Frontend will be available at: [http://localhost:4200](http://localhost:4200)
 
 #### Backend Only
 
@@ -152,7 +154,7 @@ ng e2e
 
 ## Project Structure
 
-```
+```text
 hello-hardware/
 ├── src/                # Backend source files
 ├── client/            # Angular frontend
@@ -167,6 +169,45 @@ hello-hardware/
 2. The project uses Husky for pre-commit hooks
 3. All commits will be linted and formatted automatically
 
+## Screenshots
+
+### Desktop Views
+
+#### Dashboard
+
+![Dashboard](apps/client/src/assets/images/screenshots/desktop-dashboard.png)
+
+#### About
+
+![About](apps/client/src/assets/images/screenshots/desktop-about.png)
+
+#### Services
+
+![Services](apps/client/src/assets/images/screenshots/desktop-services.png)
+
+#### Support
+
+![Support](apps/client/src/assets/images/screenshots/desktop-support.png)
+
+#### Product Details
+
+![Product Details](apps/client/src/assets/images/screenshots/desktop-product-detail.png)
+
+#### Shopping Cart
+
+![Shopping Cart](apps/client/src/assets/images/screenshots/desktop-cart.png)
+
+### Mobile View
+
+![Mobile View](apps/client/src/assets/images/screenshots/mobile-view.png)
+
 ## License
 
 This project is licensed under the UNLICENSED license.
+
+## Contact
+
+- **Developer**: Jospen Wolongwo
+- **Email**: [jospenwolongwo@gmail.com](mailto:jospenwolongwo@gmail.com)
+- **Website**: [jospenwolongwo.com](https://jospenwolongwo.com)
+- **GitHub**: [JospenWolongwo](https://github.com/JospenWolongwo)
