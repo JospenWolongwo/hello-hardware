@@ -1,0 +1,100 @@
+<div fxLayout="row" class="bg-primary p-4 page-header" fxLayoutAlign="space-between center">
+  <h2 fxLayout="row" fxLayout="flex-start center" fxLayoutGap="4px">
+    <a [routerLink]="'../../'" i18n="Table title| The Store table title@@storeUserTableTitle">STORE USERS</a>
+    <span>></span>
+    <span i18n="Table title| The permission table title@@permissionTableTitle">PERMISSIONS</span>
+  </h2>
+  <div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="16px">
+    <button
+      mat-icon-button
+      class="white-btn"
+      [disabled]="!selectionIsNotEmpty"
+      matTooltip="Deactivate selected permissions"
+      (click)="deactivatePermissionDialog()"
+      matTooltip-i18n="Material tooltip for permissions deactivation@@deactivatePermissionsToolTip"
+      aria-label="Deactivation of permissions button"
+      i18n-aria-label="@@ariaLabelDeactivatePermissionsButton"
+      *ngIf="canRevokePermissions"
+    >
+      <mat-icon>cancel</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="white-btn"
+      [disabled]="!selectionIsNotEmpty"
+      matTooltip="Activate selected permissions"
+      (click)="activatePermissionDialog()"
+      matTooltip-i18n="Material tooltip for permissions activation@@activatePermissionsToolTip"
+      aria-label="Activation of permissions button"
+      i18n-aria-label="@@ariaLabelActivatePermissionsButton"
+      *ngIf="canAddPermissions"
+    >
+      <mat-icon>done</mat-icon>
+    </button>
+    <span aria-label="Store user name/email">{{ userName }}</span>
+  </div>
+</div>
+<div
+  class="table"
+  fxLayout="column"
+  aria-label="Store user's permissions"
+  i18n-aria-label="@@storeUserPermissionsTable"
+>
+  <mat-table #table [dataSource]="dataSource">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (click)="toggleAllRows()" [checked]="allIsSelected" [indeterminate]="undetermined">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="table-cell">
+        <mat-checkbox (click)="toggleRow($event, row)" [checked]="isSelected(row)"> </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Row number Column -->
+    <ng-container matColumnDef="row-number">
+      <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index" class="table-cell"> {{ i + 1 }} </mat-cell>
+    </ng-container>
+
+    <!-- Permission Column -->
+    <ng-container matColumnDef="permission">
+      <mat-header-cell
+        *matHeaderCellDef
+        i18n="Column Title| The permission column title of the table@@permissionColumn"
+      >
+        Permission
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.name }} </mat-cell>
+    </ng-container>
+
+    <!-- Status -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The status title of the table@@statusColumn">
+        Status
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell">
+        <ng-container *ngIf="element.status">
+          <mat-icon aria-label="Activated permission" i18n-aria-label="@@ariaLabelActivePermission">
+            check_circle
+          </mat-icon>
+        </ng-container>
+        <ng-container *ngIf="!element.status">
+          <mat-icon aria-label="Deactivated permission" i18n-aria-label="@@ariaLabelNonActivePermission">
+            cancel
+          </mat-icon>
+        </ng-container>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns" class="bg-primary"></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="toggleRow($event, row)"
+      [class.selected-row]="isSelected(row)"
+    ></mat-row>
+  </mat-table>
+  <mat-paginator [pageSize]="10" showFirstLastButtons class="bg-primary" aria-label="permissions per page">
+  </mat-paginator>
+</div>

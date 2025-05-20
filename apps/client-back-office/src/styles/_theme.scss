@@ -1,0 +1,53 @@
+// imports
+
+@use '@angular/material' as mat;
+@use 'sass:map';
+@use './variables' as var;
+@use './typography' as typo;
+// Main body of the theming
+
+@include mat.core();
+
+$balafon-back-office-primary: mat.define-palette(var.$primary-palette, 900, 50, 800);
+$balafon-back-office-accent: mat.define-palette(var.$accent-palette, 800, 50, 700);
+$balafon-back-office-warn: mat.define-palette(var.$warning-palette, 800, 50, 700);
+
+$balafon-back-office-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $balafon-back-office-primary,
+      accent: $balafon-back-office-accent,
+      warn: $balafon-back-office-warn,
+    ),
+    typography: typo.$balafon-back-office-typography
+  )
+);
+
+@mixin basic-page($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    font-size: var.$base-font-size;
+    position: relative;
+    height: 100%;
+    font-family: var.$font-family;
+    background-color: map-get($background, background);
+    color: map-get($foreground, text);
+    overflow-y: auto;
+  }
+
+  * {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+}
+
+@include mat.all-component-themes($balafon-back-office-theme);
+@include mat.typography-hierarchy($balafon-back-office-theme);
+@include basic-page($balafon-back-office-theme);

@@ -1,0 +1,15 @@
+@use 'variables' as var;
+
+.mat-icon {
+  &.large {
+    transform: scale(1.5);
+    margin-top: -30%;
+  }
+
+  &.icon {
+    font-size: 24px;
+    height: 100%;
+    width: 100%;
+    padding: var.$base-space * 3;
+  }
+}

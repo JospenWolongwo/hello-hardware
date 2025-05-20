@@ -1,0 +1,46 @@
+<div
+  class="flex-row flex-wrap justify-content-center w-1440px gap-6"
+  [class.p-l-4]="isMobile || isTablet"
+  [class.p-r-4]="isMobile || isTablet"
+  [class.p-l-25]="!isMobile && !isTablet"
+>
+  <div
+    *ngFor="let product of productData"
+    class="product-card flex-col w-100 p-l-4 p-r-4"
+    [class.product-card-mobile]="isMobile"
+    [class.product-card-tablet]="isTablet"
+  >
+    <div class="product-card-content flex-row justify-content-space-between">
+      <div class="product-card-details flex-col align-items-start gap-3">
+        <div class="product-card-discount p-b-8">
+          {{ product.tag }}
+        </div>
+        <h3 class="product-name txt-bold">{{ product.name }}</h3>
+        <p class="product-specs">{{ product.description }}</p>
+
+        <div class="product-pricing flex-row">
+          <span class="product-price txt-primary"> {{ product.price }} {{ product.currency }} </span>
+        </div>
+
+        <div class="product-actions flex-row">
+          <button class="btn-reserve flex-row align-items-center justify-content-center cursor-pointer">
+            RESERVER MAINTENANT
+            <span class="icon p-l-2">
+              <fa-icon [icon]="['fab', 'whatsapp']"></fa-icon>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="product-card-image-container">
+        <div class="price-badge flex-col align-items-center justify-content-center">
+          <span class="price-value txt-bold">{{ product.price }}</span>
+          <span class="currency txt-bold">{{ product.currency }}</span>
+        </div>
+        <div class="product-card-image">
+          <img [src]="product.imageUrl" [alt]="product.name" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

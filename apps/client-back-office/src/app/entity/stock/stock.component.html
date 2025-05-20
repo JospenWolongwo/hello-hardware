@@ -1,0 +1,133 @@
+<div fxLayout="row" class="bg-primary p-4 page-header" fxLayoutAlign="space-between center">
+  <h2 fxLayout="row" fxLayout="flex-start center" fxLayoutGap="4px" class="upper-case">
+    <a [routerLink]="'../../'" i18n="Table title| The Product category table title@@productCategoryTableTitle"
+      >PRODUCT</a
+    >
+    <span>></span>
+    <span *ngIf="product">{{ productName }}</span>
+    <span>></span>
+    <span i18n="Table title| The stock table title@@stockTableTitle">STOCKS</span>
+  </h2>
+  <button
+    mat-fab
+    extended
+    color="accent"
+    aria-label="Add product stock"
+    i18n-aria-label="@@addStock"
+    (click)="creationDialog()"
+  >
+    <mat-icon>add</mat-icon>
+    <span i18n="Button text| Add a new stock button text@@addStockButton">New Stock</span>
+  </button>
+</div>
+<div class="table" fxLayout="column" aria-label="Product stocks" i18n-aria-label="@@productStockTable">
+  <mat-table #table [dataSource]="dataSource">
+    <!-- Row number Column -->
+    <ng-container matColumnDef="row-number">
+      <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index" class="table-cell"> {{ i + 1 }} </mat-cell>
+    </ng-container>
+
+    <!-- Unit Column -->
+    <ng-container matColumnDef="unit">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The unit column title of the table@@unitColumn">
+        Unit
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.keepingUnit }} </mat-cell>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The price column title of the table@@priceColumn">
+        Price
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.price | currency }} </mat-cell>
+    </ng-container>
+
+    <!-- Quantity Column -->
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The quantity column title of the table@@quantityColumn">
+        Quantity
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell">
+        {{ element.quantity }}
+      </mat-cell>
+    </ng-container>
+
+    <!-- CreatedAt Column -->
+    <ng-container matColumnDef="created-at">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The created at column title of the table@@createdAtColumn">
+        Created At
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.createdAt }} </mat-cell>
+    </ng-container>
+
+    <!-- UpdatedAt Column -->
+    <ng-container matColumnDef="updated-at">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The name updated at title of the table@@updatedAtColumn">
+        Updated At
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.updatedAt }} </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The actions column title of the table@@actionsColumn">
+        Actions
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell action">
+        <button mat-icon-button [matMenuTriggerFor]="actionMenu" aria-label="actions" i18n-aria-label="@@actions">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #actionMenu="matMenu">
+          <button
+            mat-menu-item
+            aria-label="Add a new sub-category to this category"
+            i18n-aria-label="@@addSubCategory"
+            (click)="updateQuantityDialog(element.id)"
+          >
+            <mat-icon>refresh</mat-icon>
+            <span class="action-word" i18n="Action| Adding a new sub-category to a category@@addSubCategoryButton">
+              Change quantity
+            </span>
+          </button>
+          <button
+            mat-menu-item
+            aria-label="View this category"
+            i18n-aria-label="@@viewCategory"
+            (click)="viewDialog(element.id)"
+          >
+            <mat-icon>visibility</mat-icon>
+            <span class="action-word" i18n="Action| View an entity @@viewButton">View</span>
+          </button>
+          <button
+            mat-menu-item
+            aria-label="Edit this category"
+            i18n-aria-label="@@editCategory"
+            (click)="updateDialog(element.id)"
+          >
+            <mat-icon>edit</mat-icon>
+            <span class="action-word" i18n="Action| Edit an entity @@editButton">Edit</span>
+          </button>
+           <!-- Upload Images -->
+            <button
+            mat-menu-item
+            aria-label="Upload images for this stock"
+            i18n-aria-label="@@uploadStockImages"
+            (click)="openUploadStockImagesDialog(element.id)"
+            *ngIf="permissions.updateStock"
+            >
+            <mat-icon>upload</mat-icon>
+            <span class="action-word" i18n="Action| Upload stock images@@uploadStockImagesButton">
+              Upload Images
+            </span>
+            </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns" class="bg-primary"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSize]="10" showFirstLastButtons class="bg-primary"> </mat-paginator>
+</div>

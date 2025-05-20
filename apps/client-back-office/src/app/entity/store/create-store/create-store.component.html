@@ -1,0 +1,66 @@
+<div class="dialog-title m-t-4" fxLayout="row" fxLayoutAlign="center center">
+  <h4 mat-dialog-title [style.max-width]="'95%'">{{ data.title }}</h4>
+</div>
+<div mat-dialog-content>
+  <div class="form-box" fxLayout="column" fxLayoutAlign="center center">
+    <form [formGroup]="form" class="form" fxLayout="column" fxLayoutAlign="flex-start">
+      <div fxLayout="column">
+        <label
+          class="form-input-label m-b-2"
+          for="categoryName"
+          i18n="Form Label| The label for the name input of the store form@@name"
+        >
+          Name
+        </label>
+        <mat-form-field appearance="outline">
+          <input
+            type="text"
+            autofocus
+            placeholder="Enter store name..."
+            i18n-placeholder="@@storePlaceholder"
+            id="storeName"
+            formControlName="name"
+            aria-label="enter the brand of the product"
+            i18n-aria-label="@@ariaLabelProductBrandInput"
+            required
+            matInput
+          />
+          <mat-error *ngIf="form.controls['name'].dirty && form.controls['name'].errors">
+            <span color="warn"*ngIf="form.controls['name'].hasError('required')"
+            i18n="Form error text| The Field is required error text@@fieldRequiredError">This field is required.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <label
+          class="form-input-label m-b-2"
+          for="storeDescription"
+          i18n="Form Label| The label for the description input of the store form@@description"
+        >
+          Description
+        </label>
+        <mat-form-field appearance="outline">
+          <textarea
+            type="text"
+            placeholder="description..."
+            i18n-placeholder="@@productName"
+            id="storeDescription"
+            autofocus
+            formControlName="description"
+            aria-label="Enter a description for the store"
+            i18n-aria-label="@@ariaLabelProductDescriptionInput"
+            matInput
+          ></textarea>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="form-buttons p-5" fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-raised-button fxFlex="45%" color="primary" [mat-dialog-close]="form.value" [disabled]="!form.valid">
+    {{ data.action }}
+  </button>
+  <button mat-button mat-dialog-close fxFlex="45%" i18n="Form close button|The close button text@@closeButtontext">
+    Close
+  </button>
+</div>

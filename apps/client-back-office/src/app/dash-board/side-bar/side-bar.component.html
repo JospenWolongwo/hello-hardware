@@ -1,0 +1,20 @@
+<ul
+  class="side-nav bg-dark"
+  fxLayout="column"
+  fxLayoutAlign="flex-start flex-start"
+  aria-label="sidebar"
+  i18n-aria-label="@@sidebar"
+>
+  <li *ngFor="let link of links">
+    <a
+      class="element"
+      [routerLink]="[link.url]"
+      routerLinkActive="active"
+      fxLayout="row"
+      fxLayoutAlign="flex-start center"
+    >
+      <mat-icon class="icon">{{ link.icon }}</mat-icon>
+      <span>{{ link.text }}</span>
+    </a>
+  </li>
+</ul>

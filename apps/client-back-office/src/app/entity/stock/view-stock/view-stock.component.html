@@ -1,0 +1,84 @@
+<div class="dialog-title m-t-4" fxLayout="row" fxLayoutAlign="center center">
+  <h4 mat-dialog-title [style.max-width]="'95%'" i18n="Modal Title: The view stock modal title@@ViewStockModalTitle">
+    View {{ data.product.name.toLocaleUpperCase() }} Stock
+  </h4>
+</div>
+<div mat-dialog-content>
+  <div fxLayout="column" fxLayoutAlign="flex-start" fxLayoutGap="8px">
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="stock id"
+      i18n-aria-label="@@ariaLabelStockId"
+    >
+      <label class="property-label" for="stock-id"><span>Id</span>:</label>
+      <span class="property-value m-l-2" id="stock-id">{{ data.id }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="stock unit"
+      i18n-aria-label="@@ariaLabelStockUnit"
+    >
+      <label class="property-label" for="stock-unit">
+        <span i18n="Modal field: The unit field label@@unit">Unit</span>:
+      </label>
+      <span class="property-value m-l-2" id="stock-unit">{{ data.keepingUnit }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="space-around center"
+      class="property-field"
+      aria-label="stock price"
+      i18n-aria-label="@@ariaLabelStockPrice"
+    >
+      <label class="property-label" for="stock-price">
+        <span i18n="Modal field: The price field label@@price">Price</span>:
+      </label>
+      <span class="property-value m-l-2 capitalize" id="stock-price">{{ data.price }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="stock quantity"
+      i18n-aria-label="@@ariaLabelStockQuantity"
+    >
+      <label class="property-label" for="stock-quantity">
+        <span i18n="Modal field: The quantity field label@@quantity">Quantity</span>:
+      </label>
+      <span class="property-value m-l-2 capitalize" id="stock-quantity">{{ data.quantity + " " + data.keepingUnit }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="stock's creation date"
+      i18n-aria-label="@@ariaLabelStockCreationDate"
+    >
+      <label class="property-label" for="creation-date">
+        <span i18n="Modal field|The label creation date field@@creationDate">Creation Date</span>:
+      </label>
+      <span class="property-value m-l-2" id="creation-date">{{ data.createdAt }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="stock' update date"
+      i18n-aria-label="@@ariaLabelStockUpdateDate"
+    >
+      <label class="property-label" for="update-date">
+        <span i18n="Modal field|The label update date field@@updateDate">Last Update date</span>:
+      </label>
+      <span class="property-value m-l-2" id="update-date">{{ data.updatedAt }}</span>
+    </div>
+  </div>
+  <div class="p-5" fxLayout="row" fxLayoutAlign="center center">
+    <button mat-button mat-dialog-close fxFlex="30%" i18n="Form close button: The close button text@@closeButtontext">
+      Close
+    </button>
+  </div>
+</div>

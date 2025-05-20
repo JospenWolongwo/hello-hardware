@@ -1,0 +1,20 @@
+// imports
+@use '@angular/material' as mat;
+
+// Main body of the typography
+
+$balafon-back-office-typography: mat.define-typography-config(
+  $font-family: '"Inter", "Roboto", sans-serif',
+  $headline-1: mat.define-typography-level(4rem, 112px, 800, $letter-spacing: -0.05em),
+  $headline-2: mat.define-typography-level(2.5rem, 56px, 800, $letter-spacing: -0.02em),
+  $headline-3: mat.define-typography-level(2.25rem, 48px, 800, $letter-spacing: -0.005em),
+  $headline-4: mat.define-typography-level(2rem, 40px, 800),
+  $headline-5: mat.define-typography-level(1.75rem, 48px, 800),
+  $headline-6: mat.define-typography-level(1.5rem, 40px, 700),
+  $subtitle-2: mat.define-typography-level(1.25rem, 36px, 600),
+  $subtitle-1: mat.define-typography-level(1rem, 32px, 500),
+  $body-1: mat.define-typography-level(1rem, 24px, 400),
+  $body-2: mat.define-typography-level(1rem, 24px, 500),
+  $caption: mat.define-typography-level(0.75rem, 24px, 500),
+  $button: mat.define-typography-level(1rem, 24px, 400),
+);

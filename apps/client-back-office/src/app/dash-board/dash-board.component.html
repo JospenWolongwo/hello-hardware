@@ -1,0 +1,28 @@
+<div
+  class="main-container"
+  fxLayout="column"
+  fxLayoutAlign="stretch"
+  ngClass.gt-md="bal-typography"
+  ngClass.lt-lg="bal-typography-sm"
+>
+  <app-nav-bar
+    (toggled)="onToggled($event)"
+    [currentEntityName]="entityNameManaged"
+    [userName]="userInfo !== null ? userInfo.email : null"
+    (loggedOut)="logout($event)"
+  ></app-nav-bar>
+  <div class="container" fxLayout="row" fxLayoutAlign="stretch">
+    <div
+      [ngClass.lt-md]="{ disappear: true, shadow: isSideBarExpanded }"
+      ngClass.gt-sm="side"
+      [@expandReduce]="isSideBarExpanded ? 'open' : 'closed'"
+      (mouseenter)="expand()"
+      (mouseleave)="reduce()"
+    >
+      <app-side-bar [links]="links"></app-side-bar>
+    </div>
+    <div class="content p-4" fxLayout="column" fxLayoutAlign="flex-start">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

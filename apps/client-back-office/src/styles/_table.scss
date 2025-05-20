@@ -1,0 +1,73 @@
+@use 'variables' as var;
+
+$columns: 'actions', 'name', 'first-name', 'last-name', 'email', 'gender', 'enabled', 'phone-number', 'row-number',
+  'parent', 'sub-categories', 'branches', 'created-at', 'updated-at', 'select', 'permission', 'store', 'status', 'code',
+  'gallery', 'brand', 'category', 'unit', 'quantity', 'price';
+
+.table {
+  @each $column in $columns {
+    .mat-column-#{$column} {
+      text-align: center;
+      justify-content: center;
+      word-wrap: break-word;
+      padding: 0px 2 * var.$base-space;
+      text-transform: capitalize;
+      min-width: 25 * var.$base-space;
+      min-height: 10 * var.$base-space;
+      color: white;
+    }
+  }
+
+  .mat-column-email {
+    text-transform: none;
+    min-width: 50 * var.$base-space;
+  }
+
+  .mat-column-permissions {
+    text-transform: none;
+    min-width: 30 * var.$base-space;
+  }
+
+  .mat-column-description {
+    text-align: center;
+    justify-content: center;
+    word-wrap: break-word;
+    min-width: 60 * var.$base-space;
+    p {
+      &::first-letter {
+        text-transform: capitalize;
+      }
+
+      margin-bottom: 0px;
+    }
+  }
+
+  .mat-column-row-number {
+    max-width: 20 * var.$base-space;
+    min-width: 20 * var.$base-space;
+  }
+
+  .mat-column-select {
+    max-width: 15 * var.$base-space;
+    min-width: 15 * var.$base-space;
+  }
+
+  .mat-column-gender {
+    max-width: 35 * var.$base-space;
+    min-width: 30 * var.$base-space;
+  }
+
+  .mat-column-actions,
+  .mat-column-enabled {
+    max-width: 30 * var.$base-space;
+    min-width: 25 * var.$base-space;
+  }
+
+  .selected-row {
+    background-color: map-get(var.$accent-palette, 800);
+
+    &.mat-mdc-row:hover {
+      background-color: map-get(var.$accent-palette, 800);
+    }
+  }
+}

@@ -1,0 +1,102 @@
+<div class="dialog-title m-t-4" fxLayout="row" fxLayoutAlign="center center">
+  <h4
+    mat-dialog-title
+    [style.max-width]="'95%'"
+    i18n="Modal Title| The view category modal title@@ViewCategoryModalTitle"
+  >
+    View Category
+  </h4>
+</div>
+<div mat-dialog-content>
+  <div fxLayout="column" fxLayoutAlign="flex-start" fxLayoutGap="8px">
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="category id"
+      i18n-aria-label="@@ariaLabelCategoryId"
+    >
+      <label class="property-label" for="category-id"><span>Id</span>:</label>
+      <span class="property-value m-l-2" id="category-id">{{ data.id }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="space-around center"
+      class="property-field"
+      aria-label="category name"
+      i18n-aria-label="@@ariaLabelCategoryName"
+    >
+      <label class="property-label" for="category-name">
+        <span i18n="Modal field|The label name field@@name">Name</span>:
+      </label>
+      <span class="property-value m-l-2 sentence" id="category-name">{{ data.name }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="category description"
+      i18n-aria-label="@@ariaLabelCategoryDescription"
+    >
+      <label class="property-label" for="category-description">
+        <span i18n="Modal field| The label description field@@description">Description</span>:
+      </label>
+      <span class="property-value m-l-2 sentence" id="category-description">{{ data.description }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="category' parent name"
+      i18n-aria-label="@@ariaLabelCategoryParent"
+    >
+      <label class="property-label" for="category-parent-name">
+        <span i18n="Modal field|The label parent name field@@parent">Parent Name</span>:
+      </label>
+      <span class="property-value m-l-2 sentence" id="category-parent-name">{{ data.parent }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="category' sub-categories"
+      i18n-aria-label="@@ariaLabelCategorySubCategories"
+    >
+      <label class="property-label" for="category-sub-categories">
+        <span i18n="Modal field| The label sub-categories field@@subCategories">Sub-categories</span>:
+      </label>
+      <span class="property-value m-l-2 capitalize" id="category-sub-categories">
+        {{ data.subCategories.join(", ") }}
+      </span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="category' creation date"
+      i18n-aria-label="@@ariaLabelCategoryCreationDate"
+    >
+      <label class="property-label" for="creation-date">
+        <span i18n="Modal field|The label creation date field@@creationDate">Creation Date</span>:
+      </label>
+      <span class="property-value m-l-2" id="creation-date">{{ data.createdAt }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="category' update date"
+      i18n-aria-label="@@ariaLabelCategoryUpdateDate"
+    >
+      <label class="property-label" for="update-date">
+        <span i18n="Modal field|The label update date field@@updateDate">Last Update date</span>:
+      </label>
+      <span class="property-value m-l-2" id="update-date">{{ data.updatedAt }}</span>
+    </div>
+  </div>
+</div>
+<div class="p-5" fxLayout="row" fxLayoutAlign="center center">
+  <button mat-button mat-dialog-close fxFlex="30%" i18n="Form close button|The close button text@@closeButtontext">
+    Close
+  </button>
+</div>

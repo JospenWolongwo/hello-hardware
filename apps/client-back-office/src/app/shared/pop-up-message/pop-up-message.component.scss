@@ -1,0 +1,25 @@
+@use '../../../styles/variables' as var;
+
+.title {
+  &.error {
+    color: var.$warning-color;
+  }
+
+  &.success {
+    color: white;
+  }
+  text-align: center;
+  padding-top: var.$base-space * 2;
+}
+
+.message {
+  &.error {
+    color: map-get(var.$warning-palette, 50);
+  }
+
+  &.success {
+    color: map-get(var.$accent-palette, 50);
+  }
+  text-align: center;
+  font-size: 1rem;
+}

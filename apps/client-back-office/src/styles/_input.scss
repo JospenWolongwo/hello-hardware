@@ -1,0 +1,63 @@
+@use 'variables' as var;
+
+.small-mat-icon-button {
+  transform: scale(0.8);
+}
+
+input {
+  border: none;
+  padding: 2 * var.$base-space;
+  background-color: map-get(var.$primary-palette, 600);
+  color: white;
+  border: 1px map-get(var.$accent-palette, 600) solid;
+  border-radius: var.$base-space;
+
+  &:focus-visible {
+    border: 2px solid white;
+    outline: none;
+  }
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: capitalize;
+  }
+}
+label {
+  line-height: normal;
+}
+
+.mat-select {
+  display: grid;
+  width: 100%;
+}
+
+.search-box {
+  height: 100%;
+  border-radius: 0px;
+}
+
+.search-field {
+  width: 100%;
+  .button-left {
+    border-radius: 8 * var.$base-space 0 0 8 * var.$base-space;
+    background-color: map-get(var.$primary-palette, 600);
+    border: 1px map-get(var.$accent-palette, 600) solid;
+    border-right: none;
+  }
+
+  .button-right {
+    border-radius: 0 8 * var.$base-space 8 * var.$base-space 0;
+    background-color: map-get(var.$primary-palette, 600);
+    border: 1px map-get(var.$accent-palette, 600) solid;
+    border-left: none;
+  }
+
+  .middle-input {
+    width: 60%;
+    padding: 2 * var.$base-space 0px;
+    border-radius: 0px;
+    border: 1px map-get(var.$accent-palette, 600) solid;
+    border-left: none;
+    border-right: none;
+  }
+}

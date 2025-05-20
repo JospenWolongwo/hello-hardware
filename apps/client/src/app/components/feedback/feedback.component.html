@@ -1,0 +1,52 @@
+<section class="feedback-section p-t-10 p-b-10">
+  <div class="w-100 flex-col align-items-center">
+    <div
+      class="w-1440px"
+      [class.p-l-4]="!isMobile"
+      [class.p-r-4]="!isMobile"
+      [class.p-l-2]="isMobile"
+      [class.p-r-2]="isMobile"
+    >
+      <h2 class="txt-left txt-dark-gray" [class.p-b-4]="isMobile"><span class="txt-primary">|</span> Feedback</h2>
+
+      <div class="feedback-slider w-100 overflow-hidden-x m-t-15">
+        <div class="slider flex-row" [class.gap-4]="!isMobile">
+          <!-- Generate cards for all reviews -->
+          <div
+            *ngFor="let review of reviews"
+            class="slider-item feedback-card p-4"
+            [ngClass]="{ 'mobile-card': isMobile, 'tablet-card': isTablet }"
+          >
+            <div class="flex-row gap-2 p-b-2 justify-content-space-between align-items-center">
+              <img [src]="review.imageUrl" [alt]="review.name" class="reviewer-img" />
+              <app-star-rating [rating]="review.rating" [fontSize]="isMobile ? 0.6 : 0.8"></app-star-rating>
+            </div>
+            <div class="flex-col justify-content-center gap-1 p-t-2 p-b-3">
+              <h4 class="txt-bold">{{ review.name }}</h4>
+              <p *ngIf="!isMobile && review.position" class="reviewer-position">{{ review.position }}</p>
+            </div>
+            <p class="p-t-2 reviewer-text">
+              {{
+                isMobile && review.reviewText
+                  ? review.reviewText.substring(0, 120) + "..."
+                  : review.reviewText || review.comment || ""
+              }}
+            </p>
+            <p *ngIf="review.date" class="review-date">{{ review.date | date : "mediumDate" }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slider Navigation Dots -->
+      <div class="flex-row justify-content-center gap-2 p-t-6" [class.p-t-4]="isMobile">
+        <div
+          *ngFor="let i of indicators"
+          class="indicator"
+          [class.sm]="isMobile"
+          [class.active]="i === currentSlide"
+          (click)="goToSlide(i)"
+        ></div>
+      </div>
+    </div>
+  </div>
+</section>

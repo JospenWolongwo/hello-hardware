@@ -1,0 +1,162 @@
+<main class="w-100">
+  <div
+    [class.p-l-18]="!currentScreenSize.ltSm"
+    [class.p-r-18]="!currentScreenSize.ltSm"
+    [class.p-b-4]="currentScreenSize.ltSm"
+    [class.p-t-10]="!currentScreenSize.ltSm"
+    [class.p-b-10]="!currentScreenSize.ltSm"
+  >
+    <!-- Support Page Header -->
+    <div class="support-header">
+      <h1 [class.text-center]="currentScreenSize.ltSm">Support & Assistance</h1>
+      <p [class.text-center]="currentScreenSize.ltSm">
+        Besoin d'aide? Nous sommes là pour vous. Découvrez comment nous pouvons vous aider avec vos produits et services
+        Hello Hardware.
+      </p>
+    </div>
+
+    <!-- Support Options -->
+    <div class="support-options" [class.support-options-mobile]="currentScreenSize.ltSm">
+      <div class="support-option-card">
+        <div class="option-icon">
+          <img src="https://img.icons8.com/fluency/96/faq.png" alt="FAQ" />
+        </div>
+        <h2>FAQ</h2>
+        <p>Trouvez rapidement des réponses aux questions les plus fréquemment posées.</p>
+        <button class="option-btn">Consulter les FAQ</button>
+      </div>
+      <div class="support-option-card">
+        <div class="option-icon">
+          <img src="https://img.icons8.com/fluency/96/email-open.png" alt="Email" />
+        </div>
+        <h2>Email</h2>
+        <p>Envoyez-nous un email et nous vous répondrons dans les plus brefs délais.</p>
+        <button class="option-btn">Nous écrire</button>
+      </div>
+      <div class="support-option-card">
+        <div class="option-icon">
+          <img src="https://img.icons8.com/fluency/96/phone.png" alt="Téléphone" />
+        </div>
+        <h2>Téléphone</h2>
+        <p>Appelez notre service client pour une assistance immédiate.</p>
+        <button class="option-btn">Nous appeler</button>
+      </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div class="contact-form-section" [class.contact-form-section-mobile]="currentScreenSize.ltSm">
+      <h2 [class.text-center]="currentScreenSize.ltSm">Contactez-nous</h2>
+      <p [class.text-center]="currentScreenSize.ltSm" class="contact-intro">
+        Remplissez le formulaire ci-dessous et un membre de notre équipe vous contactera dans les plus brefs délais.
+      </p>
+
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Nom</label>
+          <input type="text" id="name" placeholder="Votre nom complet" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Votre adresse email" />
+        </div>
+        <div class="form-group">
+          <label for="subject">Sujet</label>
+          <select id="subject">
+            <option value="" disabled selected>Choisir un sujet</option>
+            <option value="question">Question sur un produit</option>
+            <option value="order">Suivi de commande</option>
+            <option value="return">Retour/Remboursement</option>
+            <option value="complaint">Réclamation</option>
+            <option value="other">Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" placeholder="Détaillez votre demande..."></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="submit-btn">Envoyer</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Support Info Cards -->
+    <div class="support-info-cards" [class.support-info-cards-mobile]="currentScreenSize.ltSm">
+      <div class="info-card">
+        <h3>Heures d'ouverture</h3>
+        <ul>
+          <li><strong>Lundi - Vendredi:</strong> 9h00 - 19h00</li>
+          <li><strong>Samedi:</strong> 10h00 - 18h00</li>
+          <li><strong>Dimanche:</strong> Fermé</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>Coordonnées</h3>
+        <ul>
+          <li><strong>Téléphone:</strong> +33 1 23 45 67 89</li>
+          <li><strong>Email:</strong> support&#64;hellohardware.fr</li>
+          <li><strong>Adresse:</strong> 123 Avenue de la Tech, 75001 Paris</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>Réseaux Sociaux</h3>
+        <ul class="social-links">
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Troubleshooting Guide -->
+    <div class="troubleshooting-section" [class.troubleshooting-section-mobile]="currentScreenSize.ltSm">
+      <h2 [class.text-center]="currentScreenSize.ltSm">Guide de dépannage rapide</h2>
+      <p [class.text-center]="currentScreenSize.ltSm" class="troubleshooting-intro">
+        Consultez ces conseils de dépannage rapide pour résoudre les problèmes courants sans attendre.
+      </p>
+
+      <div class="troubleshooting-items">
+        <div class="troubleshooting-item">
+          <h3>Problèmes de démarrage</h3>
+          <p>
+            Si votre appareil ne s'allume pas, vérifiez d'abord les connexions d'alimentation et assurez-vous que la
+            batterie est chargée. Essayez ensuite un redémarrage forcé en maintenant le bouton d'alimentation pendant 10
+            secondes.
+          </p>
+        </div>
+        <div class="troubleshooting-item">
+          <h3>Connexion Internet</h3>
+          <p>
+            Pour les problèmes de connexion, redémarrez votre routeur et votre appareil. Vérifiez que le mode avion est
+            désactivé et que vous êtes à portée d'un signal Wi-Fi ou cellulaire.
+          </p>
+        </div>
+        <div class="troubleshooting-item">
+          <h3>Applications qui ne répondent pas</h3>
+          <p>
+            Si une application ne répond pas, fermez-la complètement et relancez-la. Si le problème persiste, redémarrez
+            votre appareil et vérifiez les mises à jour disponibles pour l'application.
+          </p>
+        </div>
+        <div class="troubleshooting-item">
+          <h3>Espace de stockage insuffisant</h3>
+          <p>
+            Libérez de l'espace en supprimant les applications inutilisées, en vidant le cache et en transférant les
+            photos et vidéos vers un stockage cloud ou externe.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Common footer components from home page -->
+  <app-feedback
+    [isMobile]="currentScreenSize.ltSm"
+    [isTablet]="currentScreenSize.ltLg && !currentScreenSize.ltSm"
+  ></app-feedback>
+  <app-newsletter
+    [isMobile]="currentScreenSize.ltSm"
+    [isTablet]="currentScreenSize.ltLg && !currentScreenSize.ltSm"
+  ></app-newsletter>
+</main>

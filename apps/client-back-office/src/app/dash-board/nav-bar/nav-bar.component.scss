@@ -1,0 +1,17 @@
+@use '../../../styles/variables' as var;
+
+.mat-toolbar.navbar.mat-primary {
+  padding: var.$base-space * 2 var.$base-space * 5;
+  height: 100%;
+
+  &.sm {
+    padding: var.$base-space * 4;
+  }
+}
+
+.menu {
+  width: 80%;
+}
+.menu-list {
+  gap: 0.5 * var.$base-space;
+}

@@ -1,0 +1,156 @@
+@use 'variables' as var;
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+
+  &.lg {
+    font-size: 2.5rem;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.page-header {
+  border-bottom: 1px solid var.$foreground-color;
+}
+
+mat-table {
+  min-height: 100%;
+}
+
+.bold-800 {
+  font-weight: 800;
+}
+
+.table {
+  width: 100%;
+}
+
+mat-drawer.mat-drawer.mat-drawer-side {
+  border: none;
+  overflow: visible;
+
+  .mat-drawer-inner-container {
+    overflow: visible;
+  }
+}
+
+.mat-mdc-menu-panel.mat-mdc-menu-panel {
+  .mat-mdc-menu-content {
+    padding: 0px;
+  }
+}
+
+.bg-dark {
+  background-color: var.$background-color;
+}
+
+.bg-primary,
+.mat-mdc-header-row.bg-primary,
+.mat-mdc-paginator.bg-primary {
+  background-color: var.$primary-color;
+}
+
+.mdc-data-table__cell.table-cell {
+  padding: var.$base-space;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+
+  &.action {
+    align-items: center;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.cdk-global-scrollblock {
+  overflow: visible;
+}
+
+.dialog-title {
+  text-align: center;
+}
+
+.form-container {
+  .mdc-dialog__content {
+    overflow: scroll;
+  }
+  padding: var.$base-space * 5;
+}
+
+.form,
+.form-buttons,
+.form-box {
+  width: 100%;
+  gap: var.$base-space * 4;
+  color: white;
+}
+
+.property-field {
+  font-size: var.$base-font-size;
+  color: white;
+  width: 100%;
+
+  .property-label {
+    font-weight: bold;
+  }
+
+  .property-value {
+    font-size: var.$base-font-size;
+  }
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.upper-case {
+  text-transform: uppercase;
+}
+
+.sentence {
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.mat-typography {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0px;
+  }
+}
+
+.page-header {
+  h2 {
+    margin-bottom: 0px;
+    font-size: 1rem;
+  }
+}
+
+.action-word {
+  font-size: 1rem;
+}
+
+.white-btn {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: map-get(var.$accent-palette, 500);
+  }
+}

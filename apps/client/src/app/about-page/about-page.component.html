@@ -1,0 +1,132 @@
+<main class="w-100">
+  <div
+    [class.p-l-18]="!currentScreenSize.ltSm"
+    [class.p-r-18]="!currentScreenSize.ltSm"
+    [class.p-b-4]="currentScreenSize.ltSm"
+    [class.p-t-10]="!currentScreenSize.ltSm"
+    [class.p-b-10]="!currentScreenSize.ltSm"
+  >
+    <!-- About Page Header -->
+    <div class="about-header">
+      <h1 [class.text-center]="currentScreenSize.ltSm">À Propos de Hello Hardware</h1>
+      <p [class.text-center]="currentScreenSize.ltSm">
+        Découvrez notre histoire, notre mission et les valeurs qui guident notre entreprise depuis sa création.
+      </p>
+    </div>
+
+    <!-- Story Section -->
+    <div class="about-story" [class.about-story-mobile]="currentScreenSize.ltSm">
+      <div class="story-content">
+        <h2>Notre Histoire</h2>
+        <p>
+          Fondée en 2020, Hello Hardware est née de la passion de trois amis passionnés par la technologie et désireux
+          de créer une expérience d'achat différente dans le domaine de l'informatique et de l'électronique.
+        </p>
+        <p>
+          Après des années d'expérience dans le secteur, ils ont constaté que de nombreux clients se sentaient perdus
+          face à la complexité des produits technologiques et ne recevaient pas toujours les conseils adaptés à leurs
+          besoins réels.
+        </p>
+        <p>
+          C'est ainsi qu'est née Hello Hardware, avec une mission claire : rendre la technologie accessible à tous grâce
+          à un service personnalisé, des produits de qualité et une équipe d'experts passionnés.
+        </p>
+      </div>
+      <div class="story-image" *ngIf="!currentScreenSize.ltSm">
+        <img
+          src="https://images.unsplash.com/photo-1551434678-e076c223a692?q=80&w=1470&auto=format&fit=crop"
+          alt="Notre équipe"
+        />
+      </div>
+    </div>
+
+    <!-- Mission and Values Section -->
+    <div class="mission-values-section" [class.mission-values-section-mobile]="currentScreenSize.ltSm">
+      <div class="mission-values-card">
+        <h2>Notre Mission</h2>
+        <p>
+          Chez Hello Hardware, notre mission est de fournir des solutions technologiques de qualité tout en offrant une
+          expérience client exceptionnelle. Nous croyons que la technologie devrait être accessible à tous, et nous nous
+          efforçons de rendre chaque interaction avec nos clients éducative et enrichissante.
+        </p>
+      </div>
+      <div class="mission-values-card">
+        <h2>Nos Valeurs</h2>
+        <ul class="values-list">
+          <li>
+            <strong>Qualité</strong> - Nous ne proposons que des produits soigneusement sélectionnés pour leur fiabilité
+            et leurs performances.
+          </li>
+          <li>
+            <strong>Service Client</strong> - Nous plaçons le client au centre de toutes nos décisions et actions.
+          </li>
+          <li>
+            <strong>Expertise</strong> - Notre équipe est constamment formée pour rester à jour avec les dernières
+            avancées technologiques.
+          </li>
+          <li>
+            <strong>Intégrité</strong> - Nous pratiquons une tarification transparente et proposons des conseils
+            honnêtes.
+          </li>
+          <li>
+            <strong>Innovation</strong> - Nous embrassons le changement et recherchons constamment de meilleures façons
+            de servir nos clients.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="team-section" [class.team-section-mobile]="currentScreenSize.ltSm">
+      <h2 [class.text-center]="currentScreenSize.ltSm">Notre Équipe</h2>
+      <p [class.text-center]="currentScreenSize.ltSm" class="team-intro">
+        Chez Hello Hardware, notre force réside dans notre équipe de professionnels passionnés et dévoués. Chaque membre
+        apporte son expertise unique pour vous offrir le meilleur service possible.
+      </p>
+
+      <div class="team-grid" [class.team-grid-mobile]="currentScreenSize.ltSm">
+        <div class="team-member" *ngFor="let member of teamMembers">
+          <div class="member-photo">
+            <img [src]="member.photo" [alt]="member.name" />
+          </div>
+          <h3>{{ member.name }}</h3>
+          <p class="member-position">{{ member.position }}</p>
+          <p class="member-bio">{{ member.bio }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Numbers Section -->
+    <div class="numbers-section" [class.numbers-section-mobile]="currentScreenSize.ltSm">
+      <h2 [class.text-center]="currentScreenSize.ltSm">Hello Hardware en Chiffres</h2>
+      <div class="numbers-grid" [class.numbers-grid-mobile]="currentScreenSize.ltSm">
+        <div class="number-card">
+          <div class="number">3+</div>
+          <p>Années d'expérience</p>
+        </div>
+        <div class="number-card">
+          <div class="number">2000+</div>
+          <p>Clients satisfaits</p>
+        </div>
+        <div class="number-card">
+          <div class="number">500+</div>
+          <p>Produits disponibles</p>
+        </div>
+        <div class="number-card">
+          <div class="number">12</div>
+          <p>Experts passionnés</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Common footer components from home page -->
+  <app-feedback
+    [isMobile]="currentScreenSize.ltSm"
+    [isTablet]="currentScreenSize.ltLg && !currentScreenSize.ltSm"
+  ></app-feedback>
+  <app-newsletter
+    [isMobile]="currentScreenSize.ltSm"
+    [isTablet]="currentScreenSize.ltLg && !currentScreenSize.ltSm"
+  ></app-newsletter>
+</main>

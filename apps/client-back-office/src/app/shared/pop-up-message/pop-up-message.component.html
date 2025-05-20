@@ -1,0 +1,15 @@
+<h4 mat-dialog-title class="title {{ data.class }}">{{ data.title }}</h4>
+<div mat-dialog-content>
+  <p class="message {{ data.class }}">{{ data.message }}</p>
+</div>
+<div class="p-5" fxLayout="row" fxLayoutAlign="center center">
+  <button
+    mat-raised-button
+    color="primary"
+    mat-dialog-close
+    fxFlex="30%"
+    i18n="Modal button text|The ok button text@@modalOkButtonText"
+  >
+    Ok
+  </button>
+</div>

@@ -1,0 +1,35 @@
+<section class="newsletter-section" [class.mobile]="isMobile" [class.tablet]="isTablet">
+  <div class="newsletter-container">
+    <h2 class="txt-white txt-center slide-up">Abonnez-vous à notre newsletter</h2>
+    <p class="txt-white txt-center slide-up">
+      Praesent fringilla erat a lacinia egestas. Donec vehicula tempor libero et cursus. Donec non quam urna. Quisque
+      vitae porta ipsum.
+    </p>
+
+    <div class="form-container">
+      <div class="subscription-form scale-in">
+        <input
+          type="email"
+          class="input-field"
+          placeholder="Email address"
+          [formControl]="emailControl"
+          [class.mobile-input]="isMobile"
+        />
+        <button class="subscribe-button" (click)="onSubmit()" [class.mobile-button]="isMobile">
+          SUBSCRIBE
+          <span class="arrow-icon">→</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="separator" [class.mobile-separator]="isMobile"></div>
+
+    <div class="partner-logos fade-in" [class.mobile-logos]="isMobile">
+      <img src="assets/images/google-logo.png" alt="Google" class="partner-logo" />
+      <img src="assets/images/amazon-logo.png" alt="Amazon" class="partner-logo" />
+      <img src="assets/images/philips-logo.png" alt="Philips" class="partner-logo" />
+      <img src="assets/images/toshiba-logo.png" alt="Toshiba" class="partner-logo" />
+      <img src="assets/images/samsung-logo.png" alt="Samsung" class="partner-logo" />
+    </div>
+  </div>
+</section>

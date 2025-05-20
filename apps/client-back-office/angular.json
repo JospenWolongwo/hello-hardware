@@ -1,0 +1,128 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "client-back-office": {
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "fr": {
+            "translation": "apps/client-back-office/src/locale/messages.fr.xlf",
+            "baseHref": ""
+          }
+        }
+      },
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/client-back-office",
+      "sourceRoot": "apps/client-back-office/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/client-back-office",
+            "index": "apps/client-back-office/src/index.html",
+            "localize": ["en-US", "fr"],
+            "main": "apps/client-back-office/src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "apps/client-back-office/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": ["apps/client-back-office/src/favicon.ico", "apps/client-back-office/src/assets"],
+            "styles": ["apps/client-back-office/src/styles/styles.scss"],
+            "allowedCommonJsDependencies": ["lodash-es"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "2mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/client-back-office/src/environments/environment.ts",
+                  "with": "apps/client-back-office/src/environments/environment.development.ts"
+                }
+              ]
+            },
+            "fr": {
+              "localize": ["fr"],
+              "i18nMissingTranslation": "error",
+              "outputPath": "dist/apps/client-back-office/fr"
+            },
+            "en-US": {
+              "localize": ["en-US"],
+              "outputPath": "dist/apps/client-back-office/en"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "client-back-office:build",
+            "proxyConfig": "apps/client-back-office/src/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "client-back-office:build:production"
+            },
+            "development": {
+              "browserTarget": "client-back-office:build:development"
+            },
+            "fr": {
+              "browserTarget": "client-back-office:build:fr"
+            },
+            "en-US": {
+              "browserTarget": "client-back-office:build:en-US"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "client-back-office:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": ["zone.js", "zone.js/testing"],
+            "tsConfig": "apps/client-back-office/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": ["apps/client-back-office/src/favicon.ico", "apps/client-back-office/src/assets"],
+            "styles": ["apps/client-back-office/src/styles/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "af6ca895-de39-4f88-8124-e09eca3f30c0"
+  }
+}

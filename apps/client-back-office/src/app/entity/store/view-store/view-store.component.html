@@ -1,0 +1,88 @@
+<div class="dialog-title m-t-4" fxLayout="row" fxLayoutAlign="center center">
+  <h4 mat-dialog-title [style.max-width]="'95%'" i18n="Modal Title| The view store modal title@@ViewStoreModalTitle">
+    View Store
+  </h4>
+</div>
+<div mat-dialog-content>
+  <div fxLayout="column" fxLayoutAlign="flex-start" fxLayoutGap="8px">
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="store id"
+      i18n-aria-label="@@ariaLabelStoreId"
+    >
+      <label class="property-label" for="store-id"><span>Id</span>:</label>
+      <span class="property-value m-l-2" id="store-id">{{ data.id }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="space-around center"
+      class="property-field"
+      aria-label="store name"
+      i18n-aria-label="@@ariaLabelStoreName"
+    >
+      <label class="property-label" for="store-name">
+        <span i18n="Modal field| The label name field@@name"> Name</span>:
+      </label>
+      <span class="property-value m-l-2 sentence" id="store-name">{{ data.name }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="store description"
+      i18n-aria-label="@@ariaLabelStoreDescription"
+    >
+      <label class="property-label" for="store-description">
+        <span i18n="Modal field| The label description field@@description">Description</span>:
+      </label>
+      <span class="property-value m-l-2 sentence" id="store-description">{{ data.description }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="store's parent name"
+      i18n-aria-label="@@ariaLabelStoreParentName"
+    >
+      <label class="property-label" for="store-parent-name">
+        <span i18n="Modal field| The label parent name field@@parent">Parent Name</span>:
+      </label>
+      <span class="property-value m-l-2 sentence" id="store-parent-name">{{ data.parent }}</span>
+    </div>
+    <div fxLayout="row" fxLayout.Align="flex-start center" class="property-field">
+      <span class="property-label"><span i18n="Modal field| The label branches field@@branches">branches</span>: </span>
+      <span class="property-value m-l-2 capitalize">{{ data.branches.join(", ") }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="store's creation date"
+      i18n-aria-label="@@ariaLabelStoreCreationDate"
+    >
+      <label class="property-label" for="creation-date">
+        <span i18n="Modal field| The label creation date field@@creationDate">Creation Date</span>:
+      </label>
+      <span class="property-value m-l-2" id="creation-date">{{ data.createdAt }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="store's update date"
+      i18n-aria-label="@@ariaLabelStoreUpdateDate"
+    >
+      <label class="property-label" for="update-date">
+        <span i18n="Modal field| The label update date field@@updateDate">Last Update date</span>:
+      </label>
+      <span class="property-value m-l-2" id="update-date">{{ data.updatedAt }}</span>
+    </div>
+  </div>
+</div>
+<div class="p-5" fxLayout="row" fxLayoutAlign="center center">
+  <button mat-button mat-dialog-close fxFlex="30%" i18n="Form close button| The close button text@@closeButtontext">
+    Close
+  </button>
+</div>

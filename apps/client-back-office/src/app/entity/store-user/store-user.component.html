@@ -1,0 +1,173 @@
+<div fxLayout="row" class="bg-primary p-4 page-header" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="40px" fxFlex="60%">
+    <h2 i18n="Table title|The Store table title@@storeUserTableTitle">STORE USERS</h2>
+    <div class="mat-select m-t-4" fxFlex="50%">
+      <mat-form-field appearance="outline">
+        <mat-select title="store" name="store" i18n-title="@@store" i18n-name="@@store" [ngModel]="selectedStore" (ngModelChange)="changeStore($event)">
+          <mat-option [value]="''" disabled selected><span i18n="select store@@selectStore">Select a store</span></mat-option>
+          <mat-option *ngFor="let store of stores" [value]="store">{{ store }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="flex-end center" fxLayoutGap="16px" fxFlex="40%">
+    <button
+      mat-icon-button
+      class="white-btn"
+      [disabled]="!selectionIsNotEmpty"
+      matTooltip="Deactivate selected store users"
+      matTooltip-i18n="Material tooltip for store user deactivation@@deactivateStoreUserToolTip"
+      aria-label="Deactivation of store users button"
+      i18n-aria-label="@@ariaLabelDeactivateStoreUsersButton"
+      *ngIf="permissions.deactivateStoreUser"
+      (click)="deactivateUserDialog()"
+    >
+      <mat-icon>person_off</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="white-btn"
+      [disabled]="!selectionIsNotEmpty"
+      matTooltip="Activate selected store users"
+      matTooltip-i18n="Material tooltip for store user activation@@activateStoreUserToolTip"
+      aria-label="Activation of store users button"
+      i18n-aria-label="@@ariaLabelActivateStoreUsersButton"
+      *ngIf="permissions.activateStoreUser"
+      (click)="activateUserDialog()"
+    >
+      <mat-icon>person</mat-icon>
+    </button>
+    <button
+      mat-fab
+      extended
+      class="m-l-6"
+      (click)="invitationDialog()"
+      aria-label="invite someone to a store"
+      i18n-aria-label="@@inviteUserToStore"
+      *ngIf="permissions.inviteUserToStore"
+    >
+      <mat-icon>add</mat-icon>
+      <span i18n="Button text|Invite new store user text@@inviteUserButton">Invite a User</span>
+    </button>
+  </div>
+</div>
+<div class="table" fxLayout="column" aria-label="Store users" i18n-aria-label="@@storeUsersTable">
+  <mat-table #table [dataSource]="dataSource">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (click)="toggleAllRows()" [checked]="allIsSelected" [indeterminate]="undetermined">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="table-cell">
+        <mat-checkbox (click)="toggleRow($event, row)" [checked]="isSelected(row)"> </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Row number Column -->
+    <ng-container matColumnDef="row-number">
+      <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index" class="table-cell"> {{ i + 1 }} </mat-cell>
+    </ng-container>
+
+    <!-- First Name Column -->
+    <ng-container matColumnDef="first-name">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title|The first name column title of the table@@firstNameColumn">
+        First Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.firstName }} </mat-cell>
+    </ng-container>
+
+    <!-- Last Name Column -->
+    <ng-container matColumnDef="last-name">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title|The last name column title of the table@@lastNameColumn">
+        Last Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.lastName }} </mat-cell>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The email column title of the table@@emailColumn">
+        Email
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell">
+        {{ element.email }}
+      </mat-cell>
+    </ng-container>
+
+    <!--Gender Column -->
+    <ng-container matColumnDef="gender">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The gender column title of the table@@genderColumn">
+        Gender
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell">
+        <span>
+          {{ element.gender }}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!--Enabled Column -->
+    <ng-container matColumnDef="enabled">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The active column title of the table@@activeColumn">
+        Active
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell">
+        <span>
+          <mat-icon *ngIf="element.enabled" aria-label="Active user" i18n-aria-label="@@activeStoreUser">
+            done
+          </mat-icon>
+          <mat-icon *ngIf="!element.enabled" aria-label="Disabled user" i18n-aria-label="@@disabledStoreUser">
+            cancel
+          </mat-icon>
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The actions column title of the table@@actionsColumn">
+        Actions
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell action">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="actionMenu"
+          aria-label="actions"
+          i18n-aria-label="@@actions"
+          (click)="$event.stopPropagation()"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #actionMenu="matMenu">
+          <a mat-menu-item [routerLink]="[element.id + '/permissions']" *ngIf="editPermissions">
+            <mat-icon>cached</mat-icon>
+            <span class="action-word" i18n="Action| Edit permissions to a store user@@editPermissionsButton">
+              Edit Permissions
+            </span>
+          </a>
+          <button
+            mat-menu-item
+            aria-label="View this store user"
+            i18n-aria-label="@@viewStoreUser"
+            (click)="viewStoreUserDialog(element.id)"
+            *ngIf="permissions.viewStoreUser"
+          >
+            <mat-icon>visibility</mat-icon>
+            <span class="action-word" i18n="Action| View a store user@@viewButton">View</span>
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns" class="bg-primary"></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="toggleRow($event, row)"
+      [class.selected-row]="isSelected(row)"
+    ></mat-row>
+  </mat-table>
+  <mat-paginator [pageSize]="10" showFirstLastButtons class="bg-primary" aria-label="store users per page">
+  </mat-paginator>
+</div>

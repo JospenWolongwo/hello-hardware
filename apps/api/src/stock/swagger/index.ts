@@ -1,0 +1,9 @@
+export { ApiDownloadStockDetails } from './api-download-stock-details.swagger';
+export { ApiChangeQuantity } from './change-quantity.swagger';
+export { ApiCreate } from './create.swagger';
+export { ApiFind } from './find.swagger';
+export { ApiGetStocksByProductId } from './get-stocks-by-product-id.swagger';
+export { ApiGetStocksByProductIds } from './get-stocks-by-product-ids.swagger';
+export { ApiGetStocksByStockIds } from './get-stocks-by-stocks-ids.swagger';
+export { ApiLikeProductStock } from './like-product-stock.swagger';
+export { ApiUpdate } from './update.swagger';

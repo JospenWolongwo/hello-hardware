@@ -1,0 +1,135 @@
+@use 'sass:color';
+@use '@angular/material' as mat;
+
+/* ------------------------BASE SPACE------------------------------ */
+$base-space: 4px;
+
+/* ------------------------COLORS------------------------------ */
+$background-color: white;
+$primary: #fa8232;
+$primary-rgb: 250, 130, 50;
+$secondary: #2da5f3;
+$red: #d24545;
+$warning: #d40404;
+$gold: #edd146;
+$green: #2db224;
+$white: white;
+$black: #0c0c0c;
+
+/* Gray Scale */
+$gray-50: #f9fafb;
+$gray-100: #f1f1f3;
+$gray-200: #eaecf0;
+$gray-300: #d0d5dd;
+$gray-400: #98a2b3;
+$gray-500: #667085;
+$gray-600: #475467;
+$gray-700: #344054;
+$gray-800: #1d2939;
+$gray-900: #101828;
+
+$gray: $gray-100;
+$gray-0: $gray-100;
+$dark-gray: #191c1f;
+$silver: #bebcbd;
+$peach: #ffe7d6;
+$golden-yellow: #ebc80c;
+$golden-yellow-rgb: 235, 200, 12;
+$pale-yellow: #f7e99e;
+
+/* --------------------------------Font----------------------------------- */
+$font-family: 'Montserrat', 'Roboto', sans-serif;
+$font-size: 16px;
+
+/* ------------------------COLORS PALETTES------------------------------ */
+$warning-palette: (
+  50: #fee8e7,
+  100: #ffcabc,
+  200: #ffa690,
+  300: #ff8164,
+  400: #ff6142,
+  500: #ff3c21,
+  600: #ff361d,
+  700: #fa2d17,
+  800: #ec2312,
+  900: #d40404,
+  contrast: (
+    50: #0c0c0c,
+    100: #0c0c0c,
+    200: #0c0c0c,
+    300: #0c0c0c,
+    400: #0c0c0c,
+    500: rgb(12 12 12 / 90%),
+    600: rgb(12 12 12 / 90%),
+    700: rgb(12 12 12 / 90%),
+    800: rgb(12 12 12 / 90%),
+    900: white,
+  ),
+);
+
+$secondary-palette: (
+  50: #e3f2fd,
+  100: #bbdefb,
+  200: #90caf9,
+  300: #64b5f6,
+  400: #42a5f5,
+  500: #2da5f3,
+  600: #1e88e5,
+  700: #1976d2,
+  800: #1565c0,
+  900: #0d47a1,
+  contrast: (
+    50: #0c0c0c,
+    100: #0c0c0c,
+    200: #0c0c0c,
+    300: #0c0c0c,
+    400: #0c0c0c,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+
+$primary-palette: (
+  50: #fff3e0,
+  100: #ffe0b2,
+  200: #ffcc80,
+  300: #ffb74d,
+  400: #ffa726,
+  500: #fa8232,
+  600: #fb8c00,
+  700: #f57c00,
+  800: #ef6c00,
+  900: #e65100,
+  contrast: (
+    50: #0c0c0c,
+    100: #0c0c0c,
+    200: #0c0c0c,
+    300: #0c0c0c,
+    400: #0c0c0c,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+
+/* ------------------------Material Typography------------------------------ */
+$hello-hardware-typography-config: mat.define-typography-config(
+  $font-family: '"Montserrat", "Roboto", sans-serif',
+  $headline-1: mat.define-typography-level(5rem, 1, 700),
+  $headline-2: mat.define-typography-level(4.5rem, 1, 700),
+  $headline-3: mat.define-typography-level(4rem, 1, 700),
+  $headline-4: mat.define-typography-level(3.5rem, 1, 700),
+  $headline-5: mat.define-typography-level(3rem, 1, 700),
+  $headline-6: mat.define-typography-level(2.5rem, 1, 700),
+  $subtitle-1: mat.define-typography-level(2rem, 1, 700),
+  $subtitle-2: mat.define-typography-level(1.25rem, 1.1, 700),
+  $body-1: mat.define-typography-level(1.25rem, 1.1, 700),
+  $body-2: mat.define-typography-level(1.25rem, 1.1, 500),
+  $caption: mat.define-typography-level(1rem, 1.1, 500),
+  $button: mat.define-typography-level(1.25rem, 1.1, 700),
+);

@@ -1,0 +1,10 @@
+export { ApiCreate } from './create.swagger';
+export { ApiFindAllInStore } from './find-all-in-store.swagger';
+export { ApiFindAllInStoreByCategory } from './find-all-in-store-by-category.swagger';
+export { ApiFindAllManagedByUser } from './find-all-managed-by-user.swagger';
+export { ApiGetAllProducts } from './find-all-products.swagger';
+export { ApiFindOneByUser } from './find-one-by-user.swagger';
+export { ApiFindOneInStore } from './find-one-in-store.swagger';
+export { ApiFindOneProductById } from './find-one-product.swagger';
+export { ApiToggle } from './toggle-product.swagger';
+export { ApiUpdate } from './update.swagger';

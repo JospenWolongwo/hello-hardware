@@ -1,0 +1,122 @@
+@use '../../../styles/variables' as vars;
+
+.showcase-carousel-section {
+  position: relative;
+  background-color: vars.$gray-200;
+  border-radius: vars.$base-space * 3;
+
+  &.mobile-section {
+    border-radius: 0;
+  }
+
+  .showcase-carousel-container {
+    position: relative;
+  }
+
+  .showcase-slider {
+    transition: transform 500ms ease-in-out;
+    width: 100%;
+  }
+
+  .slider-item {
+    flex: 0 0 100%;
+    min-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .showcase-visual {
+    position: relative;
+  }
+
+  .showcase-card {
+    padding: 2rem;
+    padding-bottom: 0;
+
+    &.mobile-card {
+      padding: 1rem;
+
+      .price-badge {
+        display: none;
+      }
+
+      .showcase-content {
+        flex-direction: column;
+      }
+
+      .showcase-title {
+        font-size: 4rem;
+      }
+    }
+
+    &.tablet-card {
+      .showcase-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    & .hide-desktop {
+      display: none;
+    }
+    & .hide-mobile {
+      display: none;
+    }
+  }
+
+  .showcase-title {
+    font-size: 3rem;
+    color: vars.$gray-900;
+    line-height: 1.2;
+  }
+
+  .tag-line {
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .horizontal-line {
+    width: vars.$base-space * 8;
+  }
+
+  .showcase-description {
+    font-size: 1.25rem;
+    color: vars.$gray-700;
+    max-width: 90%;
+  }
+
+  .showcase-image {
+    width: 100%;
+    max-width: vars.$base-space * 130;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .price-badge {
+    background-color: vars.$secondary;
+    color: vars.$white;
+    width: vars.$base-space * 30;
+    height: vars.$base-space * 30;
+    border-radius: 50%;
+    position: absolute;
+    top: vars.$base-space * -7.5;
+    right: 0;
+    z-index: 1;
+    border: 2px solid vars.$white;
+
+    .price-value {
+      font-size: 1.5rem;
+    }
+
+    .currency {
+      font-size: 1rem;
+    }
+
+    .carousel-indicator {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+}

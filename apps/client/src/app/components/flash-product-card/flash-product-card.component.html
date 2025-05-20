@@ -1,0 +1,23 @@
+<div
+  class="product-card flex-row align-items-center position-relative"
+  [class.card-mobile]="isMobile"
+  [class.card-tablet]="isTablet"
+  (click)="navigateToProductDetail()"
+>
+  <!-- Wishlist Icon -->
+  <div class="wishlist-icon" [class.active]="product.inWishlist" (click)="toggleWishlist($event)">
+    <fa-icon [icon]="product.inWishlist ? ['fas', 'heart'] : ['far', 'heart']"></fa-icon>
+  </div>
+
+  <!-- Product Image -->
+  <div class="product-img-container">
+    <img [src]="product.imageUrl" [alt]="product.name" class="product-img" />
+  </div>
+
+  <!-- Product details -->
+  <div class="product-details">
+    <h4 class="product-name">{{ product.name }}</h4>
+    <p class="product-specs">{{ product.specs }}</p>
+    <div class="product-price">{{ product.price.toFixed(0) }} {{ product.currency }}</div>
+  </div>
+</div>

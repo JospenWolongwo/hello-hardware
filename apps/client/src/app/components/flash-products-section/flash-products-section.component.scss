@@ -1,0 +1,59 @@
+@use '../../../styles/variables' as var;
+
+.flash-products-container {
+  margin: 0 auto;
+
+  &.container-mobile {
+    padding: 2.5 * var.$base-space;
+  }
+
+  &.container-tablet {
+    padding: 4 * var.$base-space;
+  }
+}
+
+.product-sections-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6.25 * var.$base-space;
+  width: 100%;
+
+  &.grid-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5 * var.$base-space;
+  }
+
+  &.grid-mobile {
+    grid-template-columns: 1fr;
+    gap: 4 * var.$base-space;
+  }
+}
+
+.product-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3 * var.$base-space;
+
+  .section-title {
+    font-size: 3.5 * var.$base-space;
+    font-weight: 600;
+    margin-bottom: 2.5 * var.$base-space;
+    color: var.$gray-800;
+    text-transform: uppercase;
+  }
+
+  .product-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 3 * var.$base-space;
+
+    app-flash-product-card {
+      width: 100%;
+      margin-bottom: 2 * var.$base-space;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+<h4 mat-dialog-title>{{ data.dialogTitle }}</h4>
+
+<mat-dialog-content class="dialog-content">
+  <!-- File Input -->
+  <div class="file-input-container">
+    <input
+      #fileInput
+      type="file"
+      (change)="onFileSelected($event)"
+      multiple
+      accept="image/jpeg, image/png, image/webp, image/gif, image/svg+xml, image/heif, image/heic"
+      id="fileInput"
+      style="display: none"
+    />
+      <button mat-raised-button color="primary" (click)="fileInput.click()">
+        <mat-icon>add_a_photo</mat-icon>
+        Select Images
+      </button>
+  </div>
+
+  <!-- Image Previews -->
+  <div *ngIf="previewUrls.length > 0" class="image-preview-container">
+    <div *ngFor="let image of previewUrls; let i = index" class="image-preview">
+      <img [src]="image.url" class="preview-img" alt="Preview Image" />
+
+      <!-- Delete Button -->
+      <button
+        mat-icon-button
+        color="warn"
+        (click)="deleteImage(i)"
+        matTooltip="Delete image"
+      >
+        <mat-icon>{{ image.uploaded ? 'delete' : 'close' }}</mat-icon>
+      </button>
+
+      <!-- Upload Status -->
+      <mat-icon *ngIf="image.uploaded" color="primary" matTooltip="Uploaded">check_circle</mat-icon>
+      <mat-icon *ngIf="!image.uploaded" color="accent" matTooltip="Pending upload">cloud_upload</mat-icon>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" (click)="onUploadImages()" [disabled]="!hasUnuploadedImages">
+    Upload
+  </button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,124 @@
+<div class="dialog-title m-t-4" fxLayout="row" fxLayoutAlign="center center">
+  <h4
+    mat-dialog-title
+    [style.max-width]="'95%'"
+    i18n="Modal Title: The view product modal title@@ViewProductModalTitle"
+  >
+    View Product
+  </h4>
+</div>
+<div mat-dialog-content>
+  <div fxLayout="column" fxLayoutAlign="flex-start" fxLayoutGap="8px">
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="product id"
+      i18n-aria-label="@@ariaLabelProductId"
+    >
+      <label class="property-label" for="product-id"><span>Id</span>:</label>
+      <span class="property-value m-l-2" id="product-id">{{ data.id }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="space-around center"
+      class="property-field"
+      aria-label="product name"
+      i18n-aria-label="@@ariaLabelProductName"
+    >
+      <label class="property-label" for="product-name">
+        <span i18n="Modal field: The name field label@@name"> Name</span>:
+      </label>
+      <span class="property-value m-l-2 capitalize" id="product-name">{{ data.name }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="product brand"
+      i18n-aria-label="@@ariaLabelProductBrand"
+    >
+      <label class="property-label" for="product-brand">
+        <span i18n="Modal field: The brand field label@@brand">Brand</span>:
+      </label>
+      <span class="property-value m-l-2 capitalize" id="product-brand">{{ data.brand }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="product gallery"
+      i18n-aria-label="@@ariaLabelProductGallery"
+    >
+      <label class="property-label" for="product-gallery">
+        <span i18n="Modal field: The gallery field label@@gallery">Gallery</span>:
+      </label>
+      <span class="property-value m-l-2" id="product-gallery">{{ data.gallery }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="product category"
+      i18n-aria-label="@@ariaLabelProductCategory"
+    >
+      <label class="property-label" for="product-category">
+        <span i18n="Modal field: The category field label@@category" class="capitalize">category</span>:
+      </label>
+      <span class="property-value m-l-2 capitalize" id="product-category">{{ data.category }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="product store"
+      i18n-aria-label="@@ariaLabelProductStore"
+    >
+      <label class="property-label" for="product-store">
+        <span i18n="Modal field: Store field label@@store" class="capitalize">store</span>:
+      </label>
+      <span class="property-value m-l-2" id="product-store">{{ data.store }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="product minimum price"
+      i18n-aria-label="@@ariaLabelProductMinPrice"
+    >
+      <label class="property-label" for="product-min-price">
+        <span i18n="Modal field: The minimum price field label@@minimumPrice">Minimum Price</span>:
+      </label>
+      <span class="property-value m-l-2" id="product-min-price">{{ data.minPrice }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="product maximum price"
+      i18n-aria-label="@@ariaLabelProductMaxPrice"
+    >
+      <label class="property-label" for="product-max-price">
+        <span i18n="Modal field: The maximum price field label@@maximumPrice">Maximum Price</span>:
+      </label>
+      <span class="property-value m-l-2" id="product-max-price">{{ data.maxPrice }}</span>
+    </div>
+    <div
+      fxLayout="row"
+      fxLayout.Align="flex-start center"
+      class="property-field"
+      aria-label="product status"
+      i18n-aria-label="@@ariaLabelProductStatus"
+    >
+      <label class="property-label" for="product-status">
+        <span i18n="Modal field: The status field label@@status">Status</span>:
+      </label>
+      <span class="property-value m-l-2" id="product-status">{{ status }}</span>
+    </div>
+  </div>
+</div>
+<div class="p-5" fxLayout="row" fxLayoutAlign="center center">
+  <button mat-button mat-dialog-close fxFlex="30%" i18n="Form close button: The close button text@@closeButtontext">
+    Close
+  </button>
+</div>

@@ -1,0 +1,19 @@
+<div class="search-field" fxLayout="row" fxLayoutAlign="stretch" aria-label="search" i18n-aria-label="@@search">
+  <div class="button-left p-l-1 p-r-2" fxLayout="row" fxLayoutAlign="center">
+    <button mat-icon-button class="small-mat-icon-button">
+      <mat-icon class="bold-800">search</mat-icon>
+    </button>
+  </div>
+  <input
+    type="text"
+    class="middle-input"
+    title="search {{ searchEntity }}"
+    i18n-title="@@searchTitle"
+    [placeholder]="searchText + searchEntity"
+  />
+  <div class="button-right p-l-1 p-r-2" fxLayout="row" fxLayoutAlign="center">
+    <button mat-icon-button class="small-mat-icon-button">
+      <mat-icon>tune</mat-icon>
+    </button>
+  </div>
+</div>

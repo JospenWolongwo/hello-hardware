@@ -1,0 +1,33 @@
+<div
+  class="flex-col product-card"
+  [class.mobile]="isMobile"
+  [class.tablet]="isTablet && !isMobile"
+  (click)="navigateToProductDetail()"
+>
+  <!-- Product Label (if any) -->
+  <div *ngIf="product.label" class="product-label" [ngClass]="getLabelClass()">
+    {{ product.label }}
+  </div>
+  <!-- Wishlist Icon -->
+  <div class="wishlist-icon" [class.active]="product.inWishlist" (click)="toggleWishlist($event)">
+    <fa-icon [icon]="product.inWishlist ? ['fas', 'heart'] : ['far', 'heart']"></fa-icon>
+  </div>
+  <!-- Product Image -->
+  <div class="product-image flex-row align-items-center justify-content-center w-100 p-t-5">
+    <img [src]="imageSrc" [alt]="product.name" (error)="onImageError()" />
+  </div>
+  <!-- Product Info -->
+  <div class="product-info flex-col p-t-2 gap-2">
+    <h3 class="product-name">{{ product.name }}</h3>
+    <p class="product-specs">{{ product.specs }}</p>
+    <p class="product-price">{{ product.price.toFixed(2) }} {{ product.currency }}</p>
+  </div>
+  <!-- Reserve Button -->
+  <button
+    class="flex-row align-items-center justify-content-center w-100 gap-1 p-2 reserve-button"
+    (click)="onReserveClick($event)"
+  >
+    Reserver
+    <fa-icon [icon]="['fab', 'whatsapp']"></fa-icon>
+  </button>
+</div>

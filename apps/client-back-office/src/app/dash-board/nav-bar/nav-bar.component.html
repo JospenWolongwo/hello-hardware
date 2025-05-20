@@ -1,0 +1,54 @@
+<mat-toolbar
+  color="primary"
+  class="navbar"
+  ngClass.lt-lg="sm"
+  fxLayout="row"
+  fxLayoutAlign="space-between center"
+  role="toolbar"
+  aria-label="navbar"
+  i18n-aria-label="@@navbar"
+>
+  <!-- Left Menu-->
+  <div class="menu-list" fxLayout="row" fxLayoutAlign="center center">
+    <button mat-icon-button (click)="toggle()" aria-label="menu" i18n-aria-label="@@menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="logo m-l-2 m-r-20" fxHide.lt-md="true" aria-label="logo">Balafon</span>
+    <span class="logo lg m-l-2" fxHide.gt-sm="true" aria-label="logo">B</span>
+  </div>
+
+  <!-- Right Menu-->
+  <div class="menu" fxLayout="row" fxLayoutAlign.lt-md="flex-end center" fxLayoutAlign.gt-sm="space-between center">
+    <!-- Search input-->
+    <app-search-input [searchEntity]="currentEntityName" fxHide.lt-md="true"></app-search-input>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="4px">
+      <button
+        mat-icon-button
+        fxHide.gt-sm="true"
+        (click)="openSearchDialog()"
+        aria-label="search"
+        i18n-aria-label="@@search"
+      >
+        <mat-icon>search</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="notifications" i18n-aria-label="@@notifications">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="settings" i18n-aria-label="@@settings">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <div fxLayout="row" fxLayoutAlign="flex-start center" class="menu-list" fxLayoutGap="4px">
+        <button mat-icon-button [matMenuTriggerFor]="profile" aria-label="account menu" i18n-aria-label="@@accountMenu">
+          <mat-icon class="large" svgIcon="profile_picture"></mat-icon>
+        </button>
+        <mat-menu #profile="matMenu" yPosition="below">
+          <button mat-menu-item (click)="logout()" aria-label="logout" i18n-aria-label="@@logout">
+            <mat-icon color="warn">logout</mat-icon>
+            <span color="warn" i18n="Button Text|Logout button text@@logoutText">Logout</span>
+          </button>
+        </mat-menu>
+        <span *ngIf="userName !== null" class="mat-subtitle-2" fxHide.lt-lg="true">{{ userName }}</span>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

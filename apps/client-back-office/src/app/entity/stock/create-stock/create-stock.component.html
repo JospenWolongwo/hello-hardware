@@ -1,0 +1,213 @@
+<div class="dialog-title m-t-4" fxLayout="row" fxLayoutAlign="center center">
+  <h4 mat-dialog-title [style.max-width]="'95%'">{{ data.title }}</h4>
+</div>
+<div mat-dialog-content>
+  <div class="form-box" fxLayout="column" fxLayoutAlign="center center">
+    <form [formGroup]="form" class="form" fxLayout="column" fxLayoutAlign="flex-start">
+      <div fxLayout="column" *ngIf="createOrEdit">
+        <label class="p-b-2">Unit</label>
+        <mat-form-field appearance="outline">
+          <input matInput
+                 type="text"
+                 placeholder="Enter a measuring unit..."
+                 id="storeUnit"
+                 formControlName="keepingUnit"
+                 aria-label="Enter a unit "
+                 i18n-aria-label="@@ariaLabelStockUnitInput"
+                 required>
+          <mat-error *ngIf="form.get('unit')?.invalid && form.get('unit')?.dirty">
+            <span color="warn" *ngIf="form.get('unit')?.hasError('required')">This field is required.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" *ngIf="createOrEdit">
+        <label class="p-b-2">Unit Price($)</label>
+        <mat-form-field appearance="outline">
+          <input matInput
+                 placeholder="{{ minPrice }}"
+                 formControlName="price"
+                 id="storePrice"
+                 type="number"
+                 step="0.01"
+                 aria-label="Enter the stock unit price"
+                 i18n-aria-label="@@ariaLabelStockUnitPriceInput">
+          <mat-error *ngIf="form.get('price')?.invalid && form.get('price')?.dirty">
+            <span color="warn" *ngIf="form.get('price')?.hasError('required')">This field is required.</span>
+            <span color="warn" *ngIf="form.get('price')?.hasError('min')">This field value should be greater than {{ minPrice }}.</span>
+            <span color="warn" *ngIf="form.get('price')?.hasError('max') && maxPrice">This field value should be less than {{ maxPrice }}.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" *ngIf="useQuantity">
+        <label class="p-b-2">Quantity</label>
+        <mat-form-field appearance="outline">
+          <input matInput
+                 placeholder="1"
+                 formControlName="quantity"
+                 id="storeQunatity"
+                 type="number"
+                 step="1"
+                 aria-label="Enter the stock quantity"
+                 i18n-aria-label="@@ariaLabelStockQuantityInput">
+          <mat-error *ngIf="form.get('quantity')?.invalid && form.get('quantity')?.dirty">
+            <span color="warn" *ngIf="form.get('quantity')?.hasError('required')">This field is required.</span>
+            <span color="warn" *ngIf="form.get('quantity')?.hasError('min')">This field value should be greater than {{ minQuantity }}.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" *ngFor="let characteristic of data.characteristics" formGroupName="attributes" class="capitalize">
+        <ng-container *ngIf="characteristic !== 'color'; else colorFormGroup">
+          <label class="p-b-2">{{characteristic}}</label>
+          <mat-form-field appearance="outline">
+            <input matInput
+                  placeholder="{{ characteristic }}"
+                  [formControlName]="characteristic"
+                  type="text"
+                  [id]="characteristic"
+                  aria-label="Enter the stock unit price"
+                  i18n-aria-label="@@ariaLabelStockUnitPriceInput">
+            <mat-error *ngIf="form.get('attributes.' + characteristic)?.invalid && form.get('attributes.' + characteristic)?.touched">
+              <span color="warn">This field is required.</span>
+            </mat-error>
+          </mat-form-field>
+        </ng-container>
+        <ng-template #colorFormGroup let-color>
+          <!--form control for the color characteristics-->
+          <div fxLayout="column" formGroupName="color">
+            <label class="p-b-2">Color</label>
+            <mat-form-field appearance="outline">
+              <input matInput formControlName="inputCtrl" />
+              <ngx-colors
+                class="p-5"
+                matSuffix
+                ngx-colors-trigger
+                formControlName="pickerCtrl"
+              ></ngx-colors>
+              <mat-error>
+                <span
+                color="warn"
+                *ngIf="form.get('attributes.color.inputCtrl')?.hasError('required')"
+                i18n="Form error text| Invalid color@@invalidColor"
+              >
+              The color is required
+              </span>
+              <span
+                color="warn"
+                *ngIf="form.get('attributes.color.inputCtrl')?.hasError('invalidColor')"
+                i18n="Form error text| Invalid color@@invalidColor"
+              >
+              The color is invalid.
+              </span>
+
+              </mat-error>
+            </mat-form-field>
+
+
+          </div>
+
+        </ng-template>
+      </div>
+      <div fxLayout="column">
+        <label class="p-b-2">Availability Status</label>
+        <mat-form-field appearance="outline">
+          <mat-select formControlName="availabilityStatus" placeholder="Select availability status" required>
+            <mat-option *ngFor="let status of availabilityOptions" [value]="status">
+              {{ status }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('availabilityStatus')?.invalid && form.get('availabilityStatus')?.touched">
+            <span color="warn">This field is required.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" formGroupName="guarantee">
+        <label class="p-b-2">Guarantee (Optional)</label>
+        <div fxLayout="row" fxLayoutGap="10px">
+          <!-- Guarantee Value -->
+          <mat-form-field appearance="outline" fxFlex="60">
+            <input matInput
+                   type="number"
+                   placeholder="Enter duration"
+                   formControlName="amount"
+                   aria-label="Guarantee duration"
+                   i18n-aria-label="@@ariaLabelStockGuaranteeValue">
+              <mat-error *ngIf="form.get('guarantee.value')?.invalid">
+                <span *ngIf="form.get('guarantee.value')?.hasError('min')">Value must be greater than 0.</span>
+              </mat-error>
+          </mat-form-field>
+
+          <!-- Guarantee Unit -->
+          <mat-form-field appearance="outline" fxFlex="40">
+            <mat-select formControlName="timeUnit" placeholder="Select unit" aria-label="Guarantee unit">
+              <mat-option *ngFor="let unit of guaranteeUnits" [value]="unit">
+                {{ unit }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayout="column" formArrayName="discounts" class="p-t-3">
+        <label class="p-b-2">Discounts (Optional)</label>
+        <div *ngFor="let discount of discounts.controls; let i = index" [formGroupName]="i" class="discount-group">
+          <div fxLayout="row" fxLayoutGap="10px">
+            <mat-form-field appearance="outline" fxFlex="45%">
+              <mat-label>Percentage (%)</mat-label>
+              <input matInput type="number" formControlName="percentage" placeholder="Enter discount percentage" />
+              <mat-error *ngIf="discount.get('percentage')?.invalid">
+                Percentage is required.
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex="45%">
+              <mat-label>Valid Until</mat-label>
+              <input matInput type="date" formControlName="validUntil" placeholder="Select a date" />
+            </mat-form-field>
+
+            <button mat-icon-button color="warn" (click)="removeDiscount(i)" matTooltip="Remove Discount">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+
+        <button mat-raised-button color="primary" (click)="addDiscount()" class="m-t-3">
+          <mat-icon>add</mat-icon> Add Discount
+        </button>
+      </div>
+
+      <div fxLayout="column" formGroupName="description" class="p-t-3">
+        <label class="p-b-2">Short Description</label>
+        <mat-form-field appearance="outline">
+          <input matInput
+                 placeholder="Enter short description (optional)"
+                 formControlName="shortDescription"
+                 aria-label="Short description"
+                 i18n-aria-label="@@ariaLabelShortDescription" />
+        </mat-form-field>
+
+        <label class="p-b-2">Long Description</label>
+        <mat-form-field appearance="outline">
+          <textarea matInput
+                    rows="3"
+                    placeholder="Enter long description (optional)"
+                    formControlName="longDescription"
+                    aria-label="Long description"
+                    i18n-aria-label="@@ariaLabelLongDescription"></textarea>
+        </mat-form-field>
+      </div>
+
+
+    </form>
+
+  </div>
+
+</div>
+<div class="form-buttons p-5" fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-raised-button fxFlex="45%" color="primary" [mat-dialog-close]="form.value" [disabled]="!form.valid" (click)="onSubmit()">
+    {{ data.action }}
+  </button>
+  <button mat-button mat-dialog-close fxFlex="45%" i18n="Form close button|The close button text@@closeButtontext">
+    Close
+  </button>
+</div>

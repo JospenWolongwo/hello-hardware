@@ -1,0 +1,27 @@
+@use '../../../styles/variables' as var;
+
+.side-nav {
+  overflow: hidden;
+  list-style: none;
+  height: 100%;
+
+  .element {
+    gap: 3 * var.$base-space;
+    padding: var.$base-space * 2 var.$base-space * 5;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+
+    &.active {
+      background-color: var.$accent-color;
+    }
+
+    span {
+      min-width: 150px;
+    }
+
+    &:hover {
+      background-color: var.$accent-color;
+    }
+  }
+}

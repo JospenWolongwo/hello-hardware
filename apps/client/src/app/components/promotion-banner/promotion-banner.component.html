@@ -1,0 +1,101 @@
+<div class="promotion-container flex-col" [class.mobile]="isMobile" [class.tablet]="isTablet">
+  <!-- Banners Section -->
+  <div class="promotion-banners flex-row">
+    <!-- Left banner - Apple HomePod -->
+    <div class="promotion-item {{ promotionItems[0].id }} flex-row justify-content-space-between">
+      <div class="promotion-content flex-col">
+        <div class="promotion-label">{{ promotionItems[0].label }}</div>
+        <div class="promotion-details">
+          <h3>{{ promotionItems[0].title }}</h3>
+          <h2>{{ promotionItems[0].tagline }}</h2>
+          <p class="description">Jam-packed with innovation, HomePod mini delivers unexpectedly.</p>
+          <div class="contact-vendor">
+            <button class="btn-primary btn-with-icon">
+              <svg
+                class="whatsapp-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.4 14.24C17.1867 14.1333 15.7133 13.41 15.52 13.34C15.3267 13.27 15.1867 13.2367 15.0467 13.45C14.9067 13.6633 14.3333 14.3133 14.21 14.4533C14.0867 14.5933 13.9633 14.61 13.75 14.5033C13.5367 14.3967 12.5733 14.0833 11.4367 13.07C10.5533 12.2833 9.94334 11.31 9.82001 11.0967C9.69668 10.8833 9.80668 10.77 9.91334 10.6633C10.01 10.5667 10.1267 10.41 10.2333 10.2867C10.34 10.1633 10.3733 10.0767 10.4433 9.93667C10.5133 9.79667 10.48 9.67333 10.43 9.56667C10.38 9.46 9.77334 7.98667 9.60001 7.56C9.43334 7.14667 9.26001 7.19334 9.13334 7.18667C9.01334 7.18 8.87334 7.18 8.73334 7.18C8.59334 7.18 8.36668 7.23 8.17334 7.44333C7.98 7.65667 7.2 8.38 7.2 9.85333C7.2 11.3267 8.3 12.75 8.44 12.89C8.58 13.03 9.93334 15.11 12 16.3367C12.81 16.75 13.4467 17 13.9433 17.1833C14.76 17.4833 15.5067 17.44 16.0933 17.39C16.74 17.3333 17.94 16.6933 18.1133 16.1933C18.2867 15.6933 18.2867 15.27 18.2367 15.19C18.1867 15.11 18.0467 15.0633 17.8333 14.9567L17.4 14.24ZM12.0367 21.25H12.0333C10.2433 21.25 8.48668 20.77 6.97334 19.8633L6.65 19.6667L3.21334 20.5333L4.10001 17.2C3.10668 15.63 2.57334 13.8033 2.57334 11.9267C2.57334 6.79333 6.87 2.5 12 2.5C14.5067 2.5 16.8567 3.48333 18.6367 5.26333C19.51 6.13 20.1988 7.15668 20.6646 8.28488C21.1303 9.41307 21.3654 10.6222 21.3567 11.8433C21.3533 16.9767 17.06 21.25 12.0367 21.25ZM20.2067 3.69333C18.02 1.50667 15.0933 0.25 12 0.25C5.61334 0.25 0.366676 5.47 0.366676 11.8267C0.366676 13.8933 0.96001 15.9033 2.09334 17.6533L0 24L6.50667 21.9567C8.19334 22.9833 10.1033 23.5267 12.0333 23.5267H12.0367C18.4233 23.5267 23.6667 18.2633 23.67 11.9267C23.67 8.83333 22.3933 5.88 20.2067 3.69333Z"
+                  fill="white"
+                />
+              </svg>
+              <span>CONTACTER LE VENDEUR</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="promotion-image">
+        <img [src]="promotionItems[0].imageUrl" [alt]="promotionItems[0].title" />
+      </div>
+    </div>
+
+    <!-- Right banner - Xiaomi Phone -->
+    <div class="promotion-item {{ promotionItems[1].id }} flex-row justify-content-space-between">
+      <div class="promotion-content flex-col">
+        <div class="promotion-label">{{ promotionItems[1].label }}</div>
+        <div class="promotion-details">
+          <h3>{{ promotionItems[1].title }}</h3>
+          <h2>{{ promotionItems[1].tagline }}</h2>
+          <p class="description">*Data provided by internal laboratories. Industry measurement.</p>
+          <div class="contact-vendor">
+            <button class="btn-primary btn-with-icon">
+              <svg
+                class="whatsapp-icon"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.4 14.24C17.1867 14.1333 15.7133 13.41 15.52 13.34C15.3267 13.27 15.1867 13.2367 15.0467 13.45C14.9067 13.6633 14.3333 14.3133 14.21 14.4533C14.0867 14.5933 13.9633 14.61 13.75 14.5033C13.5367 14.3967 12.5733 14.0833 11.4367 13.07C10.5533 12.2833 9.94334 11.31 9.82001 11.0967C9.69668 10.8833 9.80668 10.77 9.91334 10.6633C10.01 10.5667 10.1267 10.41 10.2333 10.2867C10.34 10.1633 10.3733 10.0767 10.4433 9.93667C10.5133 9.79667 10.48 9.67333 10.43 9.56667C10.38 9.46 9.77334 7.98667 9.60001 7.56C9.43334 7.14667 9.26001 7.19334 9.13334 7.18667C9.01334 7.18 8.87334 7.18 8.73334 7.18C8.59334 7.18 8.36668 7.23 8.17334 7.44333C7.98 7.65667 7.2 8.38 7.2 9.85333C7.2 11.3267 8.3 12.75 8.44 12.89C8.58 13.03 9.93334 15.11 12 16.3367C12.81 16.75 13.4467 17 13.9433 17.1833C14.76 17.4833 15.5067 17.44 16.0933 17.39C16.74 17.3333 17.94 16.6933 18.1133 16.1933C18.2867 15.6933 18.2867 15.27 18.2367 15.19C18.1867 15.11 18.0467 15.0633 17.8333 14.9567L17.4 14.24ZM12.0367 21.25H12.0333C10.2433 21.25 8.48668 20.77 6.97334 19.8633L6.65 19.6667L3.21334 20.5333L4.10001 17.2C3.10668 15.63 2.57334 13.8033 2.57334 11.9267C2.57334 6.79333 6.87 2.5 12 2.5C14.5067 2.5 16.8567 3.48333 18.6367 5.26333C19.51 6.13 20.1988 7.15668 20.6646 8.28488C21.1303 9.41307 21.3654 10.6222 21.3567 11.8433C21.3533 16.9767 17.06 21.25 12.0367 21.25ZM20.2067 3.69333C18.02 1.50667 15.0933 0.25 12 0.25C5.61334 0.25 0.366676 5.47 0.366676 11.8267C0.366676 13.8933 0.96001 15.9033 2.09334 17.6533L0 24L6.50667 21.9567C8.19334 22.9833 10.1033 23.5267 12.0333 23.5267H12.0367C18.4233 23.5267 23.6667 18.2633 23.67 11.9267C23.67 8.83333 22.3933 5.88 20.2067 3.69333Z"
+                  fill="white"
+                />
+              </svg>
+              <span>CONTACTEZ LE VENDEUR</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="promotion-image">
+        <img [src]="promotionItems[1].imageUrl" [alt]="promotionItems[1].title" />
+        <div class="price-bubble" *ngIf="promotionItems[1].price">
+          <span class="price">{{ promotionItems[1].price }}</span>
+          <span class="currency">{{ promotionItems[1].currency }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Categories Section -->
+  <div class="filter-categories flex-row justify-content-space-between align-items-center">
+    <h3 class="results-count">{{ filterCategories.length }} RÉSULTATS DISPONIBLES</h3>
+    <div class="sort-section flex-row align-items-center">
+      <span class="sort-label">Trier par</span>
+      <div class="sort-dropdown flex-row align-items-center">
+        <span>{{ sortOption || "Most Popular" }}</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M6 9L12 15L18 9"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Filters -->
+  <div class="category-filters flex-row flex-wrap">
+    <div *ngFor="let category of filterCategories" class="category-filter-item" (click)="applyFilter(category)">
+      {{ category }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.txt {
+    &-center{
+        text-align: center;
+    }
+
+    &-left{
+        text-align: left;
+    }
+
+    &-right {
+        text-align: right;
+    }
+
+    &-justify{
+        text-align: justify;
+    }
+
+    &-capitalize{
+        text-transform: capitalize;
+    }
+
+    &-upper-case{
+        text-transform: uppercase;
+    }
+
+    &-lower-case{
+        text-transform: lowercase;
+    }
+}

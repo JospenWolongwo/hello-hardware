@@ -1,0 +1,96 @@
+<footer class="footer" [class.mobile]="isMobile" [class.tablet]="isTablet">
+  <div class="footer-content">
+    <!-- Logo and Contact Section -->
+    <div class="footer-info flex-col">
+      <div class="logo-section flex-col">
+        <a routerLink="/" class="logo-link flex-row align-items-center txt-center gap-1">
+          <img src="assets/images/logo-footer.png" alt="Hello Hardware" class="logo" />
+          <span class="logo-text">Hello Hardware</span>
+        </a>
+        <div class="contact-info flex-col gap-2">
+          <p class="text-gray-400">Customer Supports:</p>
+          <p class="phone">+237 674 83 22 00</p>
+          <p class="address text-gray-400">Rue Ngosso Din Bell, 18580<br />Douala, Cameroun</p>
+          <p class="email text-gray-400">contact&#64;hellocomputing.tech</p>
+        </div>
+      </div>
+      <!-- Social Media Links -->
+      <div class="social-links flex-row gap-4">
+        <a routerLink="/not-found" class="social-link" aria-label="Twitter">
+          <fa-icon [icon]="faTwitter"></fa-icon>
+        </a>
+        <a routerLink="/not-found" class="social-link" aria-label="Facebook">
+          <fa-icon [icon]="faFacebook"></fa-icon>
+        </a>
+        <a routerLink="/not-found" class="social-link" aria-label="YouTube">
+          <fa-icon [icon]="faYoutube"></fa-icon>
+        </a>
+        <a routerLink="/not-found" class="social-link" aria-label="Instagram">
+          <fa-icon [icon]="faInstagram"></fa-icon>
+        </a>
+        <a routerLink="/not-found" class="social-link" aria-label="Pinterest">
+          <fa-icon [icon]="faPinterest"></fa-icon>
+        </a>
+        <a routerLink="/not-found" class="social-link" aria-label="Reddit">
+          <fa-icon [icon]="faReddit"></fa-icon>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Links Sections -->
+    <div class="footer-links flex-row">
+      <!-- Top Category -->
+      <div class="link-group flex-col">
+        <h3 class="footer-title">TOP CATEGORY</h3>
+        <div class="links flex-col gap-2">
+          <a routerLink="/not-found" routerLinkActive="active">Computer & Laptop</a>
+          <a routerLink="/not-found" routerLinkActive="active">SmartPhone</a>
+          <a routerLink="/not-found" routerLinkActive="active">Headphones</a>
+          <a routerLink="/not-found" routerLinkActive="active">Accessories</a>
+          <a routerLink="/not-found" routerLinkActive="active">Camera & Photo</a>
+          <a routerLink="/not-found" routerLinkActive="active">TV & Homes</a>
+          <a routerLink="/not-found" class="browse-all">Browse All Products →</a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="link-group flex-col">
+        <h3 class="footer-title">QUICK LINKS</h3>
+        <div class="links flex-col gap-2">
+          <a routerLink="/not-found">Shop Product</a>
+          <a routerLink="/cart">Shopping Cart</a>
+          <a routerLink="/wishlist">Wishlist</a>
+          <a routerLink="/not-found">Compare</a>
+          <a routerLink="/not-found">Track Order</a>
+          <a routerLink="/not-found">Customer Help</a>
+          <a routerLink="/not-found">About Us</a>
+        </div>
+      </div>
+
+      <!-- Popular Tags -->
+      <div class="link-group">
+        <h3 class="footer-title">POPULAR TAG</h3>
+        <div class="tags">
+          <a routerLink="/not-found" class="tag">Laptop</a>
+          <a routerLink="/not-found" class="tag">iPhone</a>
+          <a routerLink="/not-found" class="tag">TV</a>
+          <a routerLink="/not-found" class="tag">Asus Laptops</a>
+          <a routerLink="/not-found" class="tag">MacBook</a>
+          <a routerLink="/not-found" class="tag">SSD</a>
+          <a routerLink="/not-found" class="tag">Graphics Card</a>
+          <a routerLink="/not-found" class="tag">Phone</a>
+          <a routerLink="/not-found" class="tag">Smart TV</a>
+          <a routerLink="/not-found" class="tag">Speaker</a>
+          <a routerLink="/not-found" class="tag">Tablet</a>
+          <a routerLink="/not-found" class="tag">Microwave</a>
+          <a routerLink="/not-found" class="tag">Samsung</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="copyright">
+    <p>&copy; 2022 Hello Computing</p>
+  </div>
+</footer>

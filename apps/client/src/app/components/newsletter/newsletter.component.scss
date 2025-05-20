@@ -1,0 +1,214 @@
+@use '../../../styles/variables' as var;
+
+.newsletter-section {
+  width: 100%;
+  background-color: rgba(88, 95, 101, 0.9);
+  position: relative;
+  padding: 60px 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: inherit;
+    z-index: -1;
+  }
+
+  .newsletter-container {
+    max-width: var.$base-space * 360;
+    margin: 0 auto;
+    padding: 0 var.$base-space * 4;
+  }
+
+  h2 {
+    font-size: var.$base-space * 9;
+    margin-bottom: var.$base-space * 4;
+    font-weight: 500;
+    color: var.$white;
+    text-align: center;
+  }
+
+  p {
+    font-size: var.$base-space * 4;
+    line-height: 1.5;
+    max-width: var.$base-space * 200;
+    margin: 0 auto var.$base-space * 8;
+    color: var.$white;
+    text-align: center;
+  }
+
+  .form-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: var.$base-space * 7.5;
+  }
+
+  .subscription-form {
+    display: flex;
+    width: 100%;
+    max-width: var.$base-space * 175;
+    position: relative;
+
+    .input-field {
+      width: 100%;
+      height: var.$base-space * 14;
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: var.$base-space * 1;
+      padding: 0 var.$base-space * 5;
+      padding-right: var.$base-space * 37.5;
+      font-size: var.$base-space * 4;
+
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: var.$primary;
+      }
+    }
+
+    .subscribe-button {
+      position: absolute;
+      right: var.$base-space * 3;
+      top: 50%;
+      transform: translateY(-50%);
+      height: calc(100% - 24px);
+      background-color: var.$primary;
+      border: none;
+      border-radius: var.$base-space * 1;
+      color: white;
+      padding: 0 var.$base-space * 7.5;
+      font-size: var.$base-space * 4;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken(var.$primary, 5%);
+      }
+
+      .arrow-icon {
+        margin-left: var.$base-space * 2.5;
+        font-size: var.$base-space * 8;
+        margin-top: var.$base-space * -2;
+      }
+    }
+  }
+
+  .separator {
+    width: 30%;
+    height: 1px;
+    background-color: var.$gray;
+    margin: 30px auto;
+    opacity: 0.3;
+  }
+
+  .partner-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: var.$base-space * 5;
+
+    .partner-logo {
+      height: var.$base-space * 18;
+      width: var.$base-space * 18;
+      margin: 0 var.$base-space * 6;
+      opacity: 0.7;
+      filter: brightness(0) invert(1);
+      transition: opacity 0.3s ease;
+      object-fit: contain;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.mobile {
+    padding: 30px 0;
+
+    .newsletter-container {
+      padding: 0 12px;
+    }
+
+    h2 {
+      font-size: var.$base-space * 6;
+      margin-bottom: var.$base-space * 4;
+    }
+
+    p {
+      font-size: var.$base-space * 3.5;
+      margin-bottom: var.$base-space * 6;
+      padding: 0 var.$base-space * 2;
+    }
+
+    .subscription-form {
+      flex-direction: column;
+      gap: var.$base-space * 3;
+
+      .input-field {
+        height: var.$base-space * 12;
+        padding: 0 var.$base-space * 4;
+        font-size: var.$base-space * 3.5;
+        padding-right: var.$base-space * 5;
+      }
+
+      .subscribe-button {
+        position: relative;
+        width: 100%;
+        height: var.$base-space * 12;
+        top: auto;
+        right: auto;
+        transform: none;
+        font-size: var.$base-space * 3.5;
+        justify-content: center;
+      }
+    }
+
+    .separator {
+      width: 50%;
+      margin: 20px auto;
+    }
+
+    .partner-logos {
+      flex-wrap: wrap;
+      gap: var.$base-space * 1;
+
+      .partner-logo {
+        height: var.$base-space * 12.5;
+        width: var.$base-space * 12.5;
+        margin: 0 15px;
+      }
+    }
+  }
+
+  &.tablet {
+    padding: 40px 0;
+
+    .newsletter-container {
+      padding: 0 14px;
+    }
+
+    h2 {
+      font-size: var.$base-space * 7;
+    }
+
+    p {
+      font-size: var.$base-space * 3.75;
+    }
+
+    .partner-logo {
+      height: var.$base-space * 15;
+      width: var.$base-space * 15;
+      margin: 0 var.$base-space * 5;
+    }
+  }
+}

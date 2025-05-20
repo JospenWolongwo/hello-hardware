@@ -1,0 +1,6 @@
+{
+  "cSpell.words": ["hello-hardware", "hellocomputing"],
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "angular.enable-strict-mode-prompt": false
+}

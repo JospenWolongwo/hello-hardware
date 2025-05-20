@@ -1,0 +1,102 @@
+/* ------       Basic variables       ------ */
+
+$base-space: 4px;
+$primary-color: #010101;
+$accent-color: #303030;
+$warning-color: #c60021;
+$foreground-color: #f2f2f2;
+$background-color: #242323;
+
+/* ------  Color palettes variables  ------ */
+
+$primary-palette: (
+  50: #f5f5f5,
+  100: #e9e9e9,
+  200: #d9d9d9,
+  300: #c4c4c4,
+  400: #9e9e9e,
+  500: #7c7c7c,
+  600: #565656,
+  700: #444444,
+  800: #272727,
+  900: #010101,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  ),
+);
+
+$accent-palette: (
+  50: #fdfdfd,
+  100: #f8f8f8,
+  200: #f3f3f3,
+  300: #eeeeee,
+  400: #cfcfcf,
+  500: #b2b2b2,
+  600: #888888,
+  700: #737373,
+  800: #535353,
+  900: #303030,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  ),
+);
+
+$warning-palette: (
+  50: #ffeaed,
+  100: #ffcad0,
+  200: #ef9496,
+  300: #e56a6e,
+  400: #ef444a,
+  500: #f42c2f,
+  600: #e51f2e,
+  700: #d31028,
+  800: #c60021,
+  900: #b80014,
+  contrast: (
+    50: rgba(black, 0),
+    100: rgba(black, 0.25),
+    200: rgba(black, 0.25),
+    300: rgba(black, 0.5),
+    400: rgba(black, 0.5),
+    500: rgba(black, 0.5),
+    600: rgba(black, 0.75),
+    700: rgba(black, 0.75),
+    800: rgba(black, 0.75),
+    900: rgba(black, 0.8),
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: white,
+    A700: white,
+  ),
+);
+
+/* ------     Typography variables     ------ */
+
+$font-family: 'Inter', 'Roboto', sans-serif;
+$base-font-size: 16px;

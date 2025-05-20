@@ -1,0 +1,197 @@
+<div fxLayout="row" class="bg-primary p-4 page-header" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayoutAlign="flex-start center" fxLayoutGap="40px" fxFlex="60%">
+    <h2 i18n="Table title|The Product table title@@productTableTitle">PRODUCTS</h2>
+    <div class="mat-select m-t-4" fxFlex="50%">
+      <mat-form-field appearance="outline">
+        <mat-select title="store" name="store" i18n-title="@@store" i18n-name="@@store" [ngModel]="selectedStore" (ngModelChange)="changeStore($event)">
+          <mat-option [value]="''" disabled selected><span i18n="select store@@selectStore">Select a store</span></mat-option>
+          <mat-option *ngFor="let store of stores" [value]="store.id">{{ store.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="flex-end center" fxLayoutGap="16px" fxFlex="40%">
+    <button
+      mat-icon-button
+      class="white-btn"
+      [disabled]="!selectionIsNotEmpty"
+      matTooltip="Deactivate selected products"
+      (click)="deactivateProductDialog()"
+      i18n-matTooltip="Material tooltip for products deactivation@@deactivateProductsToolTip"
+      aria-label="Deactivation of products button"
+      i18n-aria-label="@@ariaLabelDeactivateProductsButton"
+      *ngIf="permissions.editProduct"
+    >
+      <mat-icon>cancel</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="white-btn"
+      [disabled]="!selectionIsNotEmpty"
+      matTooltip="Activate selected products"
+      (click)="activateProductDialog()"
+      i18n-matTooltip="Material tooltip for products activation@@activateProductsToolTip"
+      aria-label="Activation of products button"
+      i18n-aria-label="@@ariaLabelActivateProductsButton"
+      *ngIf="permissions.editProduct"
+    >
+      <mat-icon>done</mat-icon>
+    </button>
+    <button
+      mat-fab
+      extended
+      type="button"
+      class="m-l-6"
+      aria-label="add a product to a store"
+      i18n-aria-label="@@addProductToStore"
+      *ngIf="permissions.createProduct"
+      (click)="creationDialog()"
+    >
+      <mat-icon>add</mat-icon>
+      <span i18n="Button text|Add a product to a store text@@addProductButton">Add Product</span>
+    </button>
+  </div>
+</div>
+<div class="table" fxLayout="column" aria-label="Products" i18n-aria-label="@@productsTable">
+  <mat-table #table [dataSource]="dataSource">
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (click)="toggleAllRows()" [checked]="allIsSelected" [indeterminate]="undetermined">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row" class="table-cell">
+        <mat-checkbox (click)="toggleRow($event, row)" [checked]="isSelected(row)"> </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Row number Column -->
+    <ng-container matColumnDef="row-number">
+      <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index" class="table-cell"> {{ i + 1 }} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title|The name column title of the table@@nameColumn">
+        Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.name }} </mat-cell>
+    </ng-container>
+
+    <!-- Gallery Column -->
+    <ng-container matColumnDef="gallery">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The gallery column title of the table@@galleryColumn">
+        Gallery
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell">
+        {{ element.gallery }}
+      </mat-cell>
+    </ng-container>
+
+    <!--Brand Column -->
+    <ng-container matColumnDef="brand">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The brand column title of the table@@brandColumn">
+        Brand
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell">
+        <span>
+          {{ element.brand }}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!--Category Column -->
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The category column title of the table@@categoryColumn">
+        Category
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell">
+        <span>
+          {{ element.category.name }}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!--Status Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The status column title of the table@@statusColumn">
+        Status
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell">
+        <span>
+          <mat-icon *ngIf="element.status" aria-label="Active product" i18n-aria-label="@@activeProduct">
+            done
+          </mat-icon>
+          <mat-icon *ngIf="!element.status" aria-label="Disabled product" i18n-aria-label="@@disabledProduct">
+            cancel
+          </mat-icon>
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The actions column title of the table@@actionsColumn">
+        Actions
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell action">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="actionMenu"
+          aria-label="actions"
+          i18n-aria-label="@@actions"
+          (click)="$event.stopPropagation()"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #actionMenu="matMenu">
+          <a mat-menu-item [routerLink]="[element.id + '/stocks']" *ngIf="permissions.viewStock">
+            <mat-icon>inventory_2</mat-icon>
+            <span class="action-word" i18n="Action| view product stock@@viewStockButton"> View stocks </span>
+          </a>
+          <button
+            mat-menu-item
+            aria-label="Edit this product"
+            i18n-aria-label="@@editProduct"
+            (click)="updateDialog(element.id)"
+            *ngIf="permissions.editProduct"
+          >
+            <mat-icon>edit</mat-icon>
+            <span class="action-word" i18n="Action| Edit an entity@@editButton">Edit</span>
+          </button>
+          <button
+            mat-menu-item
+            aria-label="View this product"
+            i18n-aria-label="@@viewProduct"
+            (click)="viewProductDialog(element.id)"
+            *ngIf="permissions.viewProduct"
+          >
+            <mat-icon>visibility</mat-icon>
+            <span class="action-word" i18n="Action| View an entity@@viewButton">View</span>
+          </button>
+
+          <!-- Upload Images -->
+          <button
+          mat-menu-item
+          aria-label="Upload images for this product"
+          i18n-aria-label="@@uploadProductImages"
+          (click)="openUploadImagesDialog(element.id)"
+          *ngIf="permissions.editProduct"
+        >
+          <mat-icon>upload</mat-icon>
+          <span class="action-word" i18n="Action| Upload product images@@uploadImagesButton">Upload Images</span>
+        </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns" class="bg-primary"></mat-header-row>
+    <mat-row
+      *matRowDef="let row; columns: displayedColumns"
+      (click)="toggleRow($event, row)"
+      [class.selected-row]="isSelected(row)"
+    ></mat-row>
+  </mat-table>
+  <mat-paginator [pageSize]="10" showFirstLastButtons class="bg-primary"> </mat-paginator>
+</div>

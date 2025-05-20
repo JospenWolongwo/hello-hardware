@@ -1,0 +1,357 @@
+<div class="dialog-title m-t-4" fxLayout="row" fxLayoutAlign="center center">
+  <h4 mat-dialog-title [style.max-width]="'95%'">{{ data.title }}</h4>
+</div>
+<mat-stepper linear class="form-box p-5" fxLayout="column" fxLayoutAlign="center center">
+  <mat-step [stepControl]="firstFormGroup" [editable]="isEditable" label="Step 1" state="info" i18n-label="@@step1">
+    <form [formGroup]="firstFormGroup" class="form m-t-2" fxLayout="column" fxLayoutAlign="flex-start">
+      <div fxLayout="column">
+        <label
+          class="form-input-label m-b-2"
+          for="productName"
+          i18n="Form Label|The label for the name input of the product form@@name"
+        >
+          Name
+        </label>
+        <mat-form-field appearance="outline">
+          <input
+            type="text"
+            placeholder="Product name"
+            i18n-placeholder="@@productName"
+            id="productName"
+            autofocus
+            formControlName="name"
+            aria-label="Enter product name"
+            i18n-aria-label="@@ariaLabelProductNameInput"
+            required
+            matInput
+          />
+          <mat-error *ngIf="firstFormGroup.controls['name'].dirty && firstFormGroup.controls['name'].errors">
+            <span color="warn" *ngIf="firstFormGroup.controls['name'].hasError('required')"
+            i18n="Form error text|The Field is required error text@@fieldRequiredError">This field is required.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column">
+        <label
+          class="form-input-label m-b-2"
+          for="productBrand"
+          i18n="Form Label|The label for the brand input of the product form@@brand"
+        >
+          Brand
+        </label>
+        <mat-form-field appearance="outline">
+          <input
+            type="text"
+            autofocus
+            placeholder="Product brand"
+            i18n-placeholder="@@productBrand"
+            id="productBrand"
+            formControlName="brand"
+            aria-label="Enter product brand"
+            i18n-aria-label="@@ariaLabelProductBrandInput"
+            required
+            matInput
+          />
+          <mat-error *ngIf="firstFormGroup.controls['brand'].dirty && firstFormGroup.controls['brand'].errors">
+            <span color="warn"*ngIf="firstFormGroup.controls['brand'].hasError('required')"
+            i18n="Form error text|The Field is required error text@@fieldRequiredError">This field is required.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column">
+        <mat-checkbox formControlName="active" color="primary">
+          <span i18n="Active Checkbox|Label for the active field@@activeCheckbox">Active</span>
+        </mat-checkbox>
+      </div>
+
+      <div class="form-buttons p-2" fxLayout="row" fxLayoutAlign="center center">
+        <button
+          mat-button
+          matStepperNext
+          fxFlex="45%"
+          type="button"
+          i18n="Form Next button| The next button text@@nextButtontext"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable" label="Step 2" state="description" i18n-label="@@step2">
+    <form [formGroup]="secondFormGroup" class="form m-t-2" fxLayout="column" fxLayoutAlign="flex-start">
+      <ng-template matStepLabel i18n="@@step2">Step 2</ng-template>
+      <div fxLayout="column">
+        <label
+          class="form-input-label m-b-2"
+          for="productDescription"
+          i18n="Form Label|The label for the description input of the product form@@description"
+        >
+          Description
+        </label>
+
+        <mat-form-field appearance="outline">
+          <textarea
+            type="text"
+            placeholder="description..."
+            i18n-placeholder="@@productName"
+            id="productDescription"
+            autofocus
+            formControlName="description"
+            aria-label="Enter a description for the product"
+            i18n-aria-label="@@ariaLabelProductDescriptionInput"
+            required
+            matInput
+          ></textarea>
+          <mat-error *ngIf="secondFormGroup.controls['description'].dirty && secondFormGroup.controls['description'].errors">
+            <span color="warn" *ngIf="secondFormGroup.controls['description'].hasError('required')"
+            i18n="Form error text|The Field minimum number of characters error text@@fieldMinLengthError">This field is required</span>
+            <span color="warn" *ngIf="secondFormGroup.controls['description'].hasError('minlength')"
+            i18n="Form error text|The Field minimum number of characters error text@@fieldMinLengthError">This field is should be at least {{ descriptionMinLength }} characters long.</span>
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div class="form-buttons p-2" fxLayout="row" fxLayoutAlign="space-between center">
+        <button
+          mat-button
+          type="button"
+          matStepperPrevious
+          fxFlex="45%"
+          i18n="Form back button| The back button text@@backButtontext"
+        >
+          Back
+        </button>
+        <button mat-button matStepperNext fxFlex="45%" i18n="Form Next button| The next button text@@nextButtontext">
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable" label="Step 3" state="price">
+    <form [formGroup]="thirdFormGroup" class="form m-t-2" fxLayout="column" fxLayoutAlign="flex-start">
+      <ng-template matStepLabel i18n="@@step3">Step 3</ng-template>
+      <div fxLayout="column">
+        <label
+          class="form-input-label m-b-2"
+          for="productMinPrice"
+          i18n="Form Label|The label for the minimum price input of the product form@@minPrice"
+        >
+          Minimum Price
+        </label>
+
+        <mat-form-field appearance="outline">
+          <input
+            type="number"
+            autofocus
+            placeholder="Enter price in $"
+            i18n-placeholder="@@productMinPrice"
+            id="productMinPrice"
+            formControlName="minPrice"
+            step="0.001"
+            aria-label="Enter the product minimum price in dollar"
+            i18n-aria-label="@@ariaLabelProductMinPriceInput"
+            required
+            (ngModelChange)="setMinPrice($event)"
+            matInput
+          />
+          <mat-error *ngIf="thirdFormGroup.controls['minPrice'].dirty && thirdFormGroup.controls['minPrice'].errors">
+            <span color="warn" *ngIf="thirdFormGroup.controls['minPrice'].hasError('required')"
+            i18n="Form error text|The Field is required error text@@fieldRequiredError">This field is required.</span>
+            <span color="warn" *ngIf="thirdFormGroup.controls['minPrice'].hasError('min')"
+            i18n="Form error text|The Field should be greater than zero error text@@fieldGreaterThanZeroError">This field value should be greater than 0.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column">
+        <label
+          class="form-input-label m-b-2"
+          for="productMaxPrice"
+          i18n="Form Label|The label for the maximum price input of the product form@@maxPrice"
+        >
+          Maximum Price
+        </label>
+        <mat-form-field appearance="outline">
+          <input
+            type="number"
+            autofocus
+            placeholder="Enter price in $"
+            i18n-placeholder="@@productMaxPrice"
+            id="productMaxPrice"
+            formControlName="maxPrice"
+            step="0.001"
+            aria-label="Enter the product maximum price in dollar"
+            i18n-aria-label="@@ariaLabelProductMaxPriceInput"
+            required
+            matInput
+          />
+          <mat-error *ngIf="thirdFormGroup.controls['maxPrice'].dirty && thirdFormGroup.controls['maxPrice'].errors">
+            <span color="warn" *ngIf="thirdFormGroup.controls['maxPrice'].hasError('smaller')"
+            i18n="Form error text|The Field should be greater than the minimum value error
+            text@@fieldGreaterThanMinimumError">This field value should be greater than {{ minPrice }}.</span>
+            <span color="warn" *ngIf="thirdFormGroup.controls['maxPrice'].hasError('required')"
+            i18n="Form error text|The Field should be greater than the minimum value error
+            text@@fieldMaxErrorRequired">This field is required.</span>
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxLayout="column" [formGroup]="extraAttributes">
+        <label
+          class="form-input-label m-b-2"
+          for="productDescription"
+          i18n="Form Label|The label for the characteristics input of the product form@@characteristics"
+        >
+          Characteristics
+        </label>
+        <mat-form-field appearance="outline">
+          <input
+              type="text"
+              autofocus
+              placeholder="color, size, material, weight, ..."
+              i18n-placeholder="@@descriptionPlaceholder"
+              id="productDescription"
+              formControlName="characteristics"
+              aria-label="Enter the characteristics values for the product"
+              i18n-aria-label="@@ariaLabelProductCharacteristicsInput"
+              required
+              matInput
+            />
+            <mat-error *ngIf="extraAttributes.controls['characteristics'].dirty && extraAttributes.controls['characteristics'].errors">
+              <span color="warn" *ngIf="extraAttributes.controls['characteristics'].hasError('required')"
+              i18n="Form error text|The Field should not be empty
+                text@@characteristicsRequiredError">This field is required.</span>
+                <span color="warn" *ngIf="extraAttributes.controls['characteristics'].errors['alphabetic']"
+              i18n="Form error text|The Field should not be empty
+                text@@characteristicsRequiredError">This field should contain only letters and commas.</span>
+            </mat-error>
+          </mat-form-field>
+      </div>
+
+      <div class="form-buttons mdc-circular-progress__color-2" fxLayout="row" fxLayoutAlign="space-between center">
+        <button
+          mat-button
+          type="button"
+          matStepperPrevious
+          fxFlex="45%"
+          i18n="Form back button| The back button text@@backButtontext"
+        >
+          Back
+        </button>
+        <button
+          mat-button
+          type="button"
+          matStepperNext
+          fxFlex="45%"
+          i18n="Form Next button| The next button text@@nextButtontext"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="fourthFormGroup" [editable]="isEditable" label="step 4" state="final" i18n-label="@@step4">
+    <form [formGroup]="fourthFormGroup" class="form m-t-2" fxLayout="column" fxLayoutAlign="flex-start">
+      <ng-template matStepLabel i18n="@@finalStep">Final Step</ng-template>
+      <div fxLayout="column">
+        <span
+          class="form-input-label m-b-2 capitalize"
+          i18n="Form Label| The label for the store input of the product form@@store"
+        >
+          store
+        </span>
+        <mat-form-field class="mat-select" appearance="outline">
+          <mat-select title="store" i18n-title="@@store" formControlName="store" autofocus>
+            <mat-option [value]="null" disabled><span i18n="select store@@selectStore">Select a store</span></mat-option>
+            <mat-option *ngFor="let store of data.stores" [value]="store.id">{{ store.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="fourthFormGroup.controls['store'].hasError('required')"
+             i18n="Form error text|The Field is required error text@@fieldRequiredError">
+            This field is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <span
+          class="form-input-label m-b-2 capitalize"
+          i18n="Form Label| The label for category of the product form@@category"
+        >
+          category
+        </span>
+        <mat-form-field class="mat-select" appearance="outline">
+          <mat-select title="category" i18n-title="@@category" formControlName="category" autofocus>
+            <mat-option [value]="null" disabled><span i18n="select category@@selectCategory">Select a category</span></mat-option>
+            <mat-option *ngFor="let category of data.categories" [value]="category.id">{{ category.name }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="fourthFormGroup.controls['category'].hasError('required')"
+             i18n="Form error text|The Field is required error text@@fieldRequiredError">
+            This field is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <label
+          class="form-input-label m-b-2"
+          for="productName"
+          i18n="Form Label|The label for the gallery input of the product form@@gallery"
+        >
+          Gallery
+        </label>
+        <mat-form-field appearance="outline">
+          <input
+              type="text"
+              autofocus
+              placeholder="Product gallery"
+              i18n-placeholder="@@descriptionPlaceholder"
+              id="productDescription"
+              formControlName="gallery"
+              aria-label="Enter the product gallery"
+              i18n-aria-label="@@ariaLabelProductGalleryInput"
+              required
+              matInput
+            />
+            <mat-error *ngIf="fourthFormGroup.controls['gallery'].dirty && fourthFormGroup.controls['gallery'].errors">
+              <span color="warn" *ngIf="fourthFormGroup.controls['gallery'].hasError('required')"
+              i18n="Form error text|The Field is required error text@@fieldRequiredError">This field is required.</span>
+            </mat-error>
+          </mat-form-field>
+      </div>
+      <div class="form-buttons p-2" fxLayout="row" fxLayoutAlign="space-between center">
+        <button
+          mat-button
+          type="button"
+          matStepperPrevious
+          fxFlex="45%"
+          i18n="Form back button| The back button text@@backButtontext"
+        >
+          Back
+        </button>
+        <button
+          mat-raised-button
+          fxFlex="45%"
+          type="button"
+          color="primary"
+          [mat-dialog-close]="stepperValue"
+          [disabled]="!isStepperValid"
+        >
+          {{ data.action }}
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <ng-template matStepperIcon="info">
+    <mat-icon>info</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="description">
+    <mat-icon>description</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="price">
+    <mat-icon>attach_money</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="final">
+    <mat-icon>check</mat-icon>
+  </ng-template>
+</mat-stepper>

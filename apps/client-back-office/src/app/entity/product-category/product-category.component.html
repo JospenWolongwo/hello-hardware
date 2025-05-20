@@ -1,0 +1,134 @@
+<div fxLayout="row" class="bg-primary p-9 page-header" fxLayoutAlign="space-between center">
+  <h2 i18n="Table title| The Product category table title@@productCategoryTableTitle">PRODUCT CATEGORY</h2>
+  <button
+    mat-fab
+    extended
+    color="accent"
+    (click)="createCategoryDialog()"
+    aria-label="Add a category"
+    i18n-aria-label="@@addCategory"
+  >
+    <mat-icon>add</mat-icon>
+    <span i18n="Button text| Add a new category button text@@addCategoryButton">New Category</span>
+  </button>
+</div>
+<div class="table" fxLayout="column" aria-label="Product categories" i18n-aria-label="@@productCategoryTable">
+  <mat-table #table [dataSource]="dataSource">
+    <!-- Row number Column -->
+    <ng-container matColumnDef="row-number">
+      <mat-header-cell *matHeaderCellDef>No.</mat-header-cell>
+      <mat-cell *matCellDef="let element; let i = index" class="table-cell"> {{ i + 1 }} </mat-cell>
+    </ng-container>
+
+    <!-- Parent Column -->
+    <ng-container matColumnDef="parent">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The parent column title of the table@@parentColumn">
+        Parent
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.parent }} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The name column title of the table@@nameColumn">
+        Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.name }} </mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell
+        *matHeaderCellDef
+        i18n="Column Title| The description column title of the table@@descriptionColumn"
+      >
+        Description
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell">
+        <p>{{ element.description }}</p>
+      </mat-cell>
+    </ng-container>
+
+    <!-- SubCategories Column -->
+    <ng-container matColumnDef="sub-categories">
+      <mat-header-cell
+        *matHeaderCellDef
+        i18n="Column Title| The sub-categories column title of the table@@subCategoryColumn"
+      >
+        Sub-categories
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell">
+        <span>
+          {{ element.subCategories.join(", ") }}
+        </span>
+      </mat-cell>
+    </ng-container>
+
+    <!-- CreatedAt Column -->
+    <ng-container matColumnDef="created-at">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The created at column title of the table@@createdAtColumn">
+        Created At
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.createdAt }} </mat-cell>
+    </ng-container>
+
+    <!-- UpdatedAt Column -->
+    <ng-container matColumnDef="updated-at">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The name updated at title of the table@@updatedAtColumn">
+        Updated At
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell"> {{ element.updatedAt }} </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef i18n="Column Title| The actions column title of the table@@actionsColumn">
+        Actions
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="table-cell action">
+        <button mat-icon-button [matMenuTriggerFor]="actionMenu" aria-label="actions" i18n-aria-label="@@actions">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #actionMenu="matMenu">
+          <button
+            mat-menu-item
+            (click)="createSubCategoryDialog(element.id)"
+            aria-label="Add a new sub-category to this category"
+            i18n-aria-label="@@addSubCategory"
+          >
+            <mat-icon>add</mat-icon>
+            <span class="action-word" i18n="Action| Adding a new sub-category to a category@@addSubCategoryButton"
+              >New sub-category</span
+            >
+          </button>
+          <button
+            mat-menu-item
+            (click)="viewCategoryDialog(element.id)"
+            aria-label="View this category"
+            i18n-aria-label="@@viewCategory"
+          >
+            <mat-icon>visibility</mat-icon>
+            <span class="action-word" i18n="Action| View an entity @@viewButton">View</span>
+          </button>
+          <button
+            mat-menu-item
+            (click)="editCategoryDialog(element.id)"
+            aria-label="Edit this category"
+            i18n-aria-label="@@editCategory"
+          >
+            <mat-icon>edit</mat-icon>
+            <span class="action-word" i18n="Action| Edit an entity @@editButton">Edit</span>
+          </button>
+          <button mat-menu-item aria-label="Delete this category" i18n-aria-label="@@deleteCategory">
+            <mat-icon>delete</mat-icon>
+            <span class="action-word" i18n="Action| Delete an entity @@deleteButton">Delete</span>
+          </button>
+        </mat-menu>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns" class="bg-primary"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSize]="10" showFirstLastButtons class="bg-primary"> </mat-paginator>
+</div>

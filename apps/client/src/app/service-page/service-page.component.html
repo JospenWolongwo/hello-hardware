@@ -1,0 +1,137 @@
+<main class="w-100">
+  <div
+    [class.p-l-18]="!currentScreenSize.ltSm"
+    [class.p-r-18]="!currentScreenSize.ltSm"
+    [class.p-b-4]="currentScreenSize.ltSm"
+    [class.p-t-10]="!currentScreenSize.ltSm"
+    [class.p-b-10]="!currentScreenSize.ltSm"
+  >
+    <!-- Service Page Header -->
+    <div class="service-header">
+      <h1 [class.text-center]="currentScreenSize.ltSm">Nos Services</h1>
+      <p [class.text-center]="currentScreenSize.ltSm">
+        Chez Hello Hardware, nous offrons une gamme complète de services pour répondre à tous vos besoins informatiques
+        et électroniques. Notre équipe de professionnels qualifiés est prête à vous aider.
+      </p>
+    </div>
+
+    <!-- Service Categories Grid -->
+    <div class="service-categories-grid" [class.service-categories-grid-mobile]="currentScreenSize.ltSm">
+      <div
+        *ngFor="let category of serviceCategories"
+        class="service-category-card"
+        [class.service-category-card-mobile]="currentScreenSize.ltSm"
+      >
+        <div class="service-icon">
+          <img [src]="category.icon" [alt]="category.title" />
+        </div>
+        <h2>{{ category.title }}</h2>
+        <p>{{ category.description }}</p>
+        <div class="service-features">
+          <ul>
+            <li *ngFor="let feature of category.features">{{ feature }}</li>
+          </ul>
+        </div>
+        <button class="service-btn">En savoir plus</button>
+      </div>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="service-contact-cta" [class.service-contact-cta-mobile]="currentScreenSize.ltSm">
+      <div class="cta-content">
+        <h2>Besoin d'une assistance personnalisée?</h2>
+        <p>Notre équipe d'experts est disponible pour vous aider à trouver la meilleure solution à vos besoins.</p>
+        <button class="primary-btn">Contactez-nous</button>
+      </div>
+      <div class="cta-image" *ngIf="!currentScreenSize.ltSm">
+        <img
+          src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1470&auto=format&fit=crop"
+          alt="Support Team"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <div class="testimonials-section" [class.testimonials-section-mobile]="currentScreenSize.ltSm">
+    <h2 [class.text-center]="currentScreenSize.ltSm">Témoignages Clients</h2>
+    <div class="testimonials-grid" [class.testimonials-grid-mobile]="currentScreenSize.ltSm">
+      <div class="testimonial-card">
+        <div class="testimonial-rating">
+          <app-star-rating [rating]="5" [fontSize]="1"></app-star-rating>
+        </div>
+        <p>
+          "Service exceptionnel! L'équipe a réparé mon ordinateur portable en un temps record. Je recommande vivement!"
+        </p>
+        <div class="testimonial-author">
+          <p><strong>Marie Dubois</strong></p>
+          <p>Client depuis 2022</p>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-rating">
+          <app-star-rating [rating]="5" [fontSize]="1"></app-star-rating>
+        </div>
+        <p>
+          "Les conseils d'achat étaient parfaitement adaptés à mes besoins. Je suis très satisfait de mon nouvel
+          équipement."
+        </p>
+        <div class="testimonial-author">
+          <p><strong>Jean Dupont</strong></p>
+          <p>Client depuis 2023</p>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-rating">
+          <app-star-rating [rating]="4" [fontSize]="1"></app-star-rating>
+        </div>
+        <p>"Installation rapide et efficace de mon réseau domestique. Techniciens professionnels et compétents."</p>
+        <div class="testimonial-author">
+          <p><strong>Sophie Martin</strong></p>
+          <p>Cliente depuis 2021</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div class="faq-section" [class.faq-section-mobile]="currentScreenSize.ltSm">
+    <h2 [class.text-center]="currentScreenSize.ltSm">Questions Fréquentes</h2>
+    <div class="faq-grid" [class.faq-grid-mobile]="currentScreenSize.ltSm">
+      <div class="faq-item">
+        <h3>Combien de temps prend généralement une réparation?</h3>
+        <p>
+          La durée dépend du type de réparation. Un diagnostic est généralement réalisé sous 24-48h, et la plupart des
+          réparations sont terminées dans un délai de 3 à 5 jours ouvrables.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>Offrez-vous des garanties sur vos services?</h3>
+        <p>
+          Oui, tous nos services de réparation sont garantis pendant 90 jours. Si le même problème réapparaît pendant
+          cette période, nous réparons gratuitement.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>Puis-je suivre l'état d'avancement de ma réparation en ligne?</h3>
+        <p>
+          Absolument! Vous recevrez un numéro de suivi par email qui vous permettra de consulter l'état de votre
+          réparation sur notre site web.
+        </p>
+      </div>
+      <div class="faq-item">
+        <h3>Proposez-vous des services à domicile?</h3>
+        <p>
+          Oui, nous offrons des services d'installation et de dépannage à domicile. Des frais supplémentaires peuvent
+          s'appliquer selon votre localisation.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Common footer component from home page -->
+  <app-newsletter
+    [isMobile]="currentScreenSize.ltSm"
+    [isTablet]="currentScreenSize.ltLg && !currentScreenSize.ltSm"
+  ></app-newsletter>
+</main>

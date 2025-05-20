@@ -1,0 +1,64 @@
+<div
+  class="flash-products-container w-1440px p-5"
+  [class.container-mobile]="isMobile"
+  [class.container-tablet]="isTablet"
+>
+  <!-- Main grid container -->
+  <div class="product-sections-grid" [class.grid-mobile]="isMobile" [class.grid-tablet]="isTablet">
+    <!-- VENTE FLASH AUJOURD'HUI Section -->
+    <div class="product-section">
+      <h3 class="section-title">VENTE FLASH AUJOURD'HUI</h3>
+      <div class="product-cards">
+        <app-flash-product-card
+          *ngFor="let product of flashSaleProducts"
+          [product]="product"
+          [isMobile]="isMobile"
+          [isTablet]="isTablet"
+        >
+        </app-flash-product-card>
+      </div>
+    </div>
+
+    <!-- MEILLEURS VENDEURS Section -->
+    <div class="product-section">
+      <h3 class="section-title">MEILLEURS VENDEURS</h3>
+      <div class="product-cards">
+        <app-flash-product-card
+          *ngFor="let product of bestSellerProducts"
+          [product]="product"
+          [isMobile]="isMobile"
+          [isTablet]="isTablet"
+        >
+        </app-flash-product-card>
+      </div>
+    </div>
+
+    <!-- LES MIEUX NOTÉS Section -->
+    <div class="product-section">
+      <h3 class="section-title">LES MIEUX NOTÉS</h3>
+      <div class="product-cards">
+        <app-flash-product-card
+          *ngFor="let product of topRatedProducts"
+          [product]="product"
+          [isMobile]="isMobile"
+          [isTablet]="isTablet"
+        >
+        </app-flash-product-card>
+      </div>
+    </div>
+
+    <!-- NOUVEAUTÉ Section -->
+    <div class="product-section">
+      <h3 class="section-title">NOUVEAUTÉ</h3>
+      <div class="product-cards">
+        <app-flash-product-card
+          *ngFor="let product of newProducts"
+          [product]="product"
+          [isMobile]="isMobile"
+          [isTablet]="isTablet"
+        >
+        </app-flash-product-card>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="dialog-title m-t-4" fxLayout="row" fxLayoutAlign="center center">
+  <h4 mat-dialog-title [style.max-width]="'95%'">{{ data.title }}</h4>
+</div>
+<div mat-dialog-content>
+  <div class="form-box" fxLayout="column" fxLayoutAlign="center center">
+    <form [formGroup]="form" class="form" fxLayout="column" fxLayoutAlign="flex-start">
+      <div fxLayout="column">
+        <span class="form-input-label m-b-2" i18n="Form Label| The label for the email input of the store form@@email">
+          Email
+        </span>
+        <mat-form-field appearance="outline">
+          <input
+            type="email"
+            autofocus
+            placeholder="User email..."
+            i18n-placeholder="email placeholder@@userEmail"
+            id="email"
+            formControlName="email"
+            aria-label="invite user email input"
+            i18n-aria-label="@@ariaLabelInviteUserEmailInput"
+            required
+            matInput
+          />
+          <mat-error *ngIf="form.controls['email'].dirty && form.controls['email'].errors">
+            <span color="warn"*ngIf="form.controls['email'].hasError('required')"
+            i18n="Form error text| The Field is required error text@@fieldRequiredError">This field is required.</span>
+            <span color="warn" *ngIf="form.controls['email'].hasError('pattern')"
+            i18n="Form error text| The email is invalid error text@@emailFormatError">The email address is incorrect.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxLayout="column">
+        <span
+          class="form-input-label m-b-2 capitalize"
+          i18n="Form Label| The label for the store input of the store form@@store"
+        >
+          store
+        </span>
+        <mat-form-field appearance="outline">
+          <mat-select title="store" i18n-title="@@store" formControlName="store" autofocus>
+            <mat-option [value]="null" disabled><span i18n="select category@@selectCategory">Select a store</span></mat-option>
+            <mat-option *ngFor="let store of data.stores" [value]="store">{{ store }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.controls['store'].hasError('required')"
+             i18n="Form error text|The Field is required error text@@fieldRequiredError">
+            This field is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="form-buttons p-5" fxLayout="row" fxLayoutAlign="space-between center">
+  <button mat-raised-button fxFlex="45%" color="primary" [mat-dialog-close]="form.value" [disabled]="!form.valid">
+    {{ data.action }}
+  </button>
+  <button mat-button mat-dialog-close fxFlex="45%" i18n="Form close button| The close button text@@closeButtontext">
+    Close
+  </button>
+</div>
